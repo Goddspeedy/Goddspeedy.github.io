@@ -5,23 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game & Level Designer Portfolio</title>
     <style>
-        /* ... (previous styles remain the same) ... */
-
-        .project-media {
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .project-image {
             margin-bottom: 20px;
         }
-        .project-media img,
-        .project-media video {
+        .project-image img {
             max-width: 100%;
             height: auto;
             border-radius: 5px;
+        }
+        .project-info {
+            overflow-y: auto;
+        }
+        .tag {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        .doc-nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 10px;
+            overflow-x: auto;
+        }
+        .doc-item {
+            flex: 0 0 auto;
+            width: 60px;
+            height: 60px;
+            margin: 0 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+        .doc-item:hover {
+            border-color: #007bff;
+        }
+        .doc-item.active {
+            border-color: #00ff00;
+        }
+        .doc-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .arrow {
+            position: absolute;
+            top: 50%;
+            font-size: 30px;
+            color: white;
+            background-color: rgba(0,0,0,0.5);
+            padding: 10px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .arrow:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+        .arrow-left {
+            left: 10px;
+        }
+        .arrow-right {
+            right: 10px;
         }
 
         @media (min-width: 768px) {
             .content {
                 flex-direction: row;
             }
-            .project-media {
+            .project-image {
                 flex: 1;
                 margin-bottom: 0;
                 padding-right: 20px;
@@ -31,63 +110,88 @@
             }
         }
 
-        /* ... (rest of the styles remain the same) ... */
+        @media (max-width: 767px) {
+            .arrow {
+                top: auto;
+                bottom: 80px;
+                padding: 5px;
+                font-size: 24px;
+            }
+            .arrow-left {
+                left: 5px;
+            }
+            .arrow-right {
+                right: 5px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- ... (body content remains the same) ... -->
+    <div class="container">
+        <header>
+            <h1>Game & Level Designer</h1>
+            <p>...and particle wizard.</p>
+        </header>
+        <div class="content" id="projectDetails"></div>
+        <div class="doc-nav" id="docNav"></div>
+    </div>
+    <div class="arrow arrow-left" onclick="navigateProject(-1)">&#10094;</div>
+    <div class="arrow arrow-right" onclick="navigateProject(1)">&#10095;</div>
 
     <script>
         const projects = [
             {
                 id: 'geostorm',
                 title: 'Geostorm (2017)',
-                media: {
-                    type: 'video',
-                    src: 'C:\Users\akula\Desktop\Goddspeedy.github.io',
-                    poster: 'https://via.placeholder.com/800x450.png?text=Geostorm+Poster'
-                },
+                image: 'https://via.placeholder.com/800x450.png?text=Geostorm+Screenshot',
                 icon: 'https://via.placeholder.com/60x60.png?text=GS',
                 tags: ['Game Design', 'Level Design'],
-                description: '...',
-                bullets: ['...'],
+                description: 'For this Lara Croft GO-inspired turn-based puzzle game I had to go back to my level design roots: puzzles. It was important to come up with mechanics that could interact with each other and serve multiple purposes, to maximize puzzle potential. When designing the levels itself, I always went for a unique narrative or catch. And with that narrative and setting in mind, decorating the levels with assets and turning it into a real environment went smooth as butter!',
+                bullets: [
+                    'Designed over 20 puzzles',
+                    'Level decoration',
+                    'Puzzle mechanics'
+                ],
                 download: 'App Store, Google Play'
             },
             {
                 id: 'kingarthur',
                 title: 'King Arthur: Legend of the Sword (2017)',
-                media: {
-                    type: 'image',
-                    src: 'https://via.placeholder.com/800x450.png?text=King+Arthur+Screenshot'
-                },
+                image: 'https://via.placeholder.com/800x450.png?text=King+Arthur+Screenshot',
                 icon: 'https://via.placeholder.com/60x60.png?text=KA',
                 tags: ['Mission Design', 'VFX', 'Scripting'],
-                description: '...',
-                bullets: ['...'],
+                description: 'Worked on mission design, visual effects, and scripting for this action game based on the movie.',
+                bullets: [
+                    'Mission design and spawnroutes',
+                    'Camera curves',
+                    'Creation of visual effects',
+                    'Scripting implementation of effects (C#)'
+                ],
                 download: 'http://game.kingarthurmovie.com/',
                 trailer: 'https://youtu.be/Br0xnUCK0'
             }
         ];
 
+        let currentProjectIndex = 0;
+
+        function createDocNav() {
+            const nav = document.getElementById('docNav');
+            projects.forEach((project, index) => {
+                const docItem = document.createElement('div');
+                docItem.className = 'doc-item';
+                docItem.innerHTML = `<img src="${project.icon}" alt="${project.title}">`;
+                docItem.onclick = () => showProject(index);
+                nav.appendChild(docItem);
+            });
+        }
+
         function showProject(index) {
             currentProjectIndex = index;
             const project = projects[index];
             const details = document.getElementById('projectDetails');
-            
-            let mediaContent;
-            if (project.media.type === 'video') {
-                mediaContent = `
-                    <video controls poster="${project.media.poster}">
-                        <source src="${project.media.src}" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>`;
-            } else {
-                mediaContent = `<img src="${project.media.src}" alt="${project.title}">`;
-            }
-
             details.innerHTML = `
-                <div class="project-media">
-                    ${mediaContent}
+                <div class="project-image">
+                    <img src="${project.image}" alt="${project.title}">
                 </div>
                 <div class="project-info">
                     <h2>${project.title}</h2>
@@ -105,7 +209,19 @@
             updateActiveDoc();
         }
 
-        // ... (rest of the JavaScript remains the same) ...
+        function updateActiveDoc() {
+            document.querySelectorAll('.doc-item').forEach((item, index) => {
+                item.classList.toggle('active', index === currentProjectIndex);
+            });
+        }
+
+        function navigateProject(direction) {
+            currentProjectIndex = (currentProjectIndex + direction + projects.length) % projects.length;
+            showProject(currentProjectIndex);
+        }
+
+        createDocNav();
+        showProject(0); // Show first project by default
     </script>
 </body>
 </html>
