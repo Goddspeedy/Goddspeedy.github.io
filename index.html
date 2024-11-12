@@ -32,7 +32,7 @@
         .project-image {
             margin-bottom: 20px;
         }
-        .project-image img {
+        .project-image img, .project-image video {
             max-width: 100%;
             height: auto;
             border-radius: 5px;
@@ -95,6 +95,27 @@
         .arrow-right {
             right: 10px;
         }
+        .media-container {
+            position: relative;
+            width: 100%;
+        }
+        .video-controls {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .video-controls button {
+            padding: 5px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .video-controls button:hover {
+            background-color: #0056b3;
+        }
 
         @media (min-width: 768px) {
             .content {
@@ -143,7 +164,11 @@
             {
                 id: 'geostorm',
                 title: 'Geostormmm (2017)',
-                image: 'https://via.placeholder.com/800x450.png?text=Geostorm+Screenshot',
+                media: {
+                    type: 'video',
+                    source: 'video.mp4',
+                    poster: 'https://via.placeholder.com/800x450.png?text=Geostorm+Screenshot'
+                },
                 icon: 'https://via.placeholder.com/60x60.png?text=GS',
                 tags: ['Game Design', 'Level Design'],
                 description: 'For this Lara Croft GO-inspired turn-based puzzle game I had to go back to my level design roots: puzzles. It was important to come up with mechanics that could interact with each other and serve multiple purposes, to maximize puzzle potential. When designing the levels itself, I always went for a unique narrative or catch. And with that narrative and setting in mind, decorating the levels with assets and turning it into a real environment went smooth as butter!',
@@ -157,7 +182,10 @@
             {
                 id: 'kingarthur',
                 title: 'King Arthur: Legend of the Sword (2017)',
-                image: 'https://via.placeholder.com/800x450.png?text=King+Arthur+Screenshot',
+                media: {
+                    type: 'image',
+                    source: 'https://via.placeholder.com/800x450.png?text=King+Arthur+Screenshot'
+                },
                 icon: 'https://via.placeholder.com/60x60.png?text=KA',
                 tags: ['Mission Design', 'VFX', 'Scripting'],
                 description: 'Worked on mission design, visual effects, and scripting for this action game based on the movie.',
@@ -173,6 +201,25 @@
         ];
 
         let currentProjectIndex = 0;
+
+        function createMediaElement(media) {
+            if (media.type === 'video') {
+                return `
+                    <div class="media-container">
+                        <video id="projectVideo" controls poster="${media.poster}">
+                            <source src="${media.source}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-controls">
+                            <button onclick="document.getElementById('projectVideo').play()">Play</button>
+                            <button onclick="document.getElementById('projectVideo').pause()">Pause</button>
+                        </div>
+                    </div>
+                `;
+            } else {
+                return `<img src="${media.source}" alt="Project screenshot">`;
+            }
+        }
 
         function createDocNav() {
             const nav = document.getElementById('docNav');
@@ -191,7 +238,7 @@
             const details = document.getElementById('projectDetails');
             details.innerHTML = `
                 <div class="project-image">
-                    <img src="${project.image}" alt="${project.title}">
+                    ${createMediaElement(project.media)}
                 </div>
                 <div class="project-info">
                     <h2>${project.title}</h2>
