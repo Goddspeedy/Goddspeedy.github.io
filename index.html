@@ -19,7 +19,7 @@
         }
         header {
             text-align: center;
-            padding: 20px;
+            padding: 0px;
             background-color: #f0f0f0;
         }
         .content {
@@ -30,14 +30,12 @@
             overflow-y: auto;
         }
         .project-image {
-            margin-bottom: 20px;
-        }
-        .project-image img, .project-image video {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
+            flex: 1;
+            margin-bottom: 0;
+            padding-right: 20px;
         }
         .project-info {
+            flex: 1;
             overflow-y: auto;
         }
         .tag {
@@ -52,70 +50,189 @@
         .doc-nav {
             display: flex;
             justify-content: center;
-            background-color: #333;
-            padding: 10px;
+            padding: 20px;
             overflow-x: auto;
+            height: 80px;
+            align-items: center;
+            gap: 15px;    
         }
         .doc-item {
             flex: 0 0 auto;
             width: 60px;
             height: 60px;
-            margin: 0 5px;
             cursor: pointer;
             border: 2px solid transparent;
-            transition: border-color 0.3s;
+            transition: all 0.3s ease;
+            border-radius: 20px;
+            transform-origin: center;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1), 
+                    0 4px 8px rgba(0,0,0,0.1);
+            background: #fff;
         }
         .doc-item:hover {
-            border-color: #007bff;
+            transform: scale(1.1) translateY(-2px);
+            z-index: 2;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2), 
+                    0 8px 16px rgba(0,0,0,0.2);
         }
         .doc-item.active {
-            border-color: #00ff00;
+            transform: scale(1.2) translateY(-4px);
+            z-index: 3;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2), 
+                    0 12px 24px rgba(0,0,0,0.2);
         }
         .doc-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-radius: 18px;
+            transition: all 0.3s ease;
         }
-        .arrow {
-            position: absolute;
-            top: 50%;
-            font-size: 30px;
-            color: white;
-            background-color: rgba(0,0,0,0.5);
-            padding: 10px;
-            cursor: pointer;
-            user-select: none;
+        .doc-item.shifting-left {
+            transform: translateX(-10px);
         }
-        .arrow:hover {
-            background-color: rgba(0,0,0,0.8);
+        .doc-item.shifting-right {
+            transform: translateX(10px);
         }
-        .arrow-left {
-            left: 10px;
-        }
-        .arrow-right {
-            right: 10px;
-        }
-        .media-container {
+        .gallery-container {
             position: relative;
             width: 100%;
         }
-        .video-controls {
-            margin-top: 10px;
+        .main-image {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .thumbnail-container {
             display: flex;
             gap: 10px;
-            justify-content: center;
+            overflow-x: auto;
+            padding: 10px 0;
+            scrollbar-width: thin;
+            scrollbar-color: #007bff #f0f0f0;
         }
-        .video-controls button {
-            padding: 5px 15px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 3px;
+        .thumbnail-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .thumbnail-container::-webkit-scrollbar-track {
+            background: #f0f0f0;
+            border-radius: 4px;
+        }
+        .thumbnail-container::-webkit-scrollbar-thumb {
+            background: #007bff;
+            border-radius: 4px;
+        }
+        .thumbnail {
+            flex: 0 0 auto;
+            width: 120px;
+            height: 68px;
+            border: 2px solid transparent;
+            border-radius: 4px;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
-        .video-controls button:hover {
-            background-color: #0056b3;
+        .thumbnail:hover {
+            transform: translateY(-2px);
         }
+        .thumbnail.active {
+            border-color: #007bff;
+        }
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 3px;
+        }
+        .gallery-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 2;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: background-color 0.3s;
+        }
+        .gallery-arrow:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .gallery-arrow.prev {
+            left: 10px;
+        }
+        .gallery-arrow.next {
+            right: 10px;
+        }
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .contact-links a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .contact-links a:hover {
+            text-decoration: underline;
+        }
+        .video-container {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.video-container video {
+    width: 100%;
+    height: auto;
+    max-height: 450px; /* Match the height of your images */
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.video-controls {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.video-controls button {
+    padding: 5px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.video-controls button:hover {
+    background-color: #0056b3;
+}
+
+.gallery-container {
+    width: 100%;
+}
+
+.thumbnail-container {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px 0;
+    scrollbar-width: thin;
+    scrollbar-color: #007bff #f0f0f0;
+}
 
         @media (min-width: 768px) {
             .content {
@@ -132,17 +249,14 @@
         }
 
         @media (max-width: 767px) {
-            .arrow {
-                top: auto;
-                bottom: 80px;
-                padding: 5px;
-                font-size: 24px;
+            .gallery-arrow {
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
             }
-            .arrow-left {
-                left: 5px;
-            }
-            .arrow-right {
-                right: 5px;
+            .thumbnail {
+                width: 80px;
+                height: 45px;
             }
         }
     </style>
@@ -156,20 +270,79 @@
         <div class="content" id="projectDetails"></div>
         <div class="doc-nav" id="docNav"></div>
     </div>
-    <div class="arrow arrow-left" onclick="navigateProject(-1)">&#10094;</div>
-    <div class="arrow arrow-right" onclick="navigateProject(1)">&#10095;</div>
 
     <script>
         const projects = [
             {
+                id: 'intro',
+                title: 'Welcome to My Portfolio',
+                media: {
+                    type: 'gallery',
+                    images: [
+                        'https://via.placeholder.com/800x450.png?text=Welcome',
+                        'https://via.placeholder.com/800x450.png?text=Image+2',
+                        'https://via.placeholder.com/800x450.png?text=Image+3',
+                        'https://via.placeholder.com/800x450.png?text=Image+4'
+                    ]
+                },
+                icon: 'home.png',
+                tags: ['Introduction', 'Portfolio'],
+                description: 'Hey there! I\'m a passionate game and level designer with a love for creating immersive interactive experiences. My journey in game design has been driven by a curiosity to explore how game mechanics, level design, and visual effects can tell compelling stories and engage players.',
+                bullets: [
+                    'Specializing in level design and game mechanics',
+                    'Experienced in Unity and Unreal Engine',
+                    'Passionate about creating unique player experiences'
+                ],
+                contact: [
+                    { name: 'LinkedIn', url: 'https://linkedin.com/in/yourprofile' },
+                    { name: 'Portfolio', url: 'https://yourportfolio.com' },
+                    { name: 'Email', url: 'mailto:designer@example.com' }
+                ]
+            },
+            {
+                id: 'about',
+                title: 'About Me',
+                media: {
+                    type: 'gallery',
+                    images: [
+                        'https://via.placeholder.com/800x450.png?text=About+Me',
+                        'https://via.placeholder.com/800x450.png?text=Skills',
+                        'https://via.placeholder.com/800x450.png?text=Experience'
+                    ]
+                },
+                icon: 'alien.png',
+                tags: ['Biography', 'Skills'],
+                description: 'With over 5 years of experience in the game industry, I\'ve worked on diverse projects ranging from mobile puzzle games to high-budget action titles. My approach to game design is holistic - I believe great games are born from the seamless integration of mechanics, narrative, and player interaction.',
+                bullets: [
+                    'Graduated with a degree in Game Design from XYZ University',
+                    'Proficient in C#, Unity, Unreal Engine, and visual scripting',
+                    'Strong background in player psychology and game flow',
+                    'Experienced in Agile and Scrum methodologies'
+                ],
+                skills: [
+                    'Level Design',
+                    'Game Mechanics',
+                    'Visual Effects',
+                    'Scripting',
+                    'Player Experience Design'
+                ]
+            },
+            {
                 id: 'geostorm',
                 title: 'Geostormmm (2017)',
                 media: {
-                    type: 'video',
-                    source: 'video.mp4',
-                    poster: 'https://via.placeholder.com/800x450.png?text=Geostorm+Screenshot'
+                    type: 'mixed',
+                    video: {
+                        source: 'video.mp4',
+                        poster: 'https://via.placeholder.com/800x450.png?text=Geostorm+Screenshot'
+                    },
+                    images: [
+                        'https://via.placeholder.com/800x450.png?text=Geostorm+1',
+                        'https://via.placeholder.com/800x450.png?text=Geostorm+2',
+                        'https://via.placeholder.com/800x450.png?text=Geostorm+3'
+                    ]
                 },
-                icon: 'https://via.placeholder.com/60x60.png?text=GS',
+                icon: 'blob.png',
                 tags: ['Game Design', 'Level Design'],
                 description: 'For this Lara Croft GO-inspired turn-based puzzle game I had to go back to my level design roots: puzzles. It was important to come up with mechanics that could interact with each other and serve multiple purposes, to maximize puzzle potential. When designing the levels itself, I always went for a unique narrative or catch. And with that narrative and setting in mind, decorating the levels with assets and turning it into a real environment went smooth as butter!',
                 bullets: [
@@ -183,10 +356,15 @@
                 id: 'kingarthur',
                 title: 'King Arthur: Legend of the Sword (2017)',
                 media: {
-                    type: 'image',
-                    source: 'https://via.placeholder.com/800x450.png?text=King+Arthur+Screenshot'
+                    type: 'gallery',
+                    images: [
+                        'https://via.placeholder.com/800x450.png?text=King+Arthur+1',
+                        'https://via.placeholder.com/800x450.png?text=King+Arthur+2',
+                        'https://via.placeholder.com/800x450.png?text=King+Arthur+3',
+                        'https://via.placeholder.com/800x450.png?text=King+Arthur+4'
+                    ]
                 },
-                icon: 'https://via.placeholder.com/60x60.png?text=KA',
+                icon: 'gog.png',
                 tags: ['Mission Design', 'VFX', 'Scripting'],
                 description: 'Worked on mission design, visual effects, and scripting for this action game based on the movie.',
                 bullets: [
@@ -201,13 +379,31 @@
         ];
 
         let currentProjectIndex = 0;
+        let currentImageIndex = 0;
 
-        function createMediaElement(media) {
-            if (media.type === 'video') {
-                return `
-                    <div class="media-container">
-                        <video id="projectVideo" controls poster="${media.poster}">
-                            <source src="${media.source}" type="video/mp4">
+       function createMediaElement(media) {
+    if (media.type === 'gallery') {
+        return `
+            <div class="gallery-container">
+                <img src="${media.images[0]}" alt="Project image" class="main-image" id="mainImage">
+                <div class="gallery-arrow prev" onclick="changeImage(-1)">❮</div>
+                <div class="gallery-arrow next" onclick="changeImage(1)">❯</div>
+                <div class="thumbnail-container">
+                    ${media.images.map((img, index) => `
+                        <div class="thumbnail ${index === 0 ? 'active' : ''}" onclick="setImage(${index})">
+                            <img src="${img}" alt="Thumbnail ${index + 1}">
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    } else if (media.type === 'mixed') {
+        return `
+            <div class="gallery-container">
+                <div id="mediaDisplay">
+                    <div class="video-container" id="videoContainer">
+                        <video id="projectVideo" controls poster="${media.video.poster}">
+                            <source src="${media.video.source}" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                         <div class="video-controls">
@@ -215,27 +411,75 @@
                             <button onclick="document.getElementById('projectVideo').pause()">Pause</button>
                         </div>
                     </div>
-                `;
-            } else {
-                return `<img src="${media.source}" alt="Project screenshot">`;
-            }
-        }
+                    <img src="${media.images[0]}" alt="Project image" class="main-image" id="mainImage" style="display: none;">
+                </div>
+                <div class="thumbnail-container">
+                    <div class="thumbnail active" onclick="switchToVideo()">
+                        <img src="${media.video.poster}" alt="Video thumbnail">
+                    </div>
+                    ${media.images.map((img, index) => `
+                        <div class="thumbnail" onclick="switchToImage(${index})">
+                            <img src="${img}" alt="Thumbnail ${index + 1}">
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }
+    return `<img src="${media.source}" alt="Project screenshot">`;
+}
 
-        function createDocNav() {
-            const nav = document.getElementById('docNav');
-            projects.forEach((project, index) => {
-                const docItem = document.createElement('div');
-                docItem.className = 'doc-item';
-                docItem.innerHTML = `<img src="${project.icon}" alt="${project.title}">`;
-                docItem.onclick = () => showProject(index);
-                nav.appendChild(docItem);
-            });
-        }
+function switchToVideo() {
+    const videoContainer = document.getElementById('videoContainer');
+    const mainImage = document.getElementById('mainImage');
+    if (videoContainer && mainImage) {
+        videoContainer.style.display = 'block';
+        mainImage.style.display = 'none';
+    }
+    
+    document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
+        thumb.classList.toggle('active', index === 0);
+    });
+}
+
+function switchToImage(index) {
+    const project = projects[currentProjectIndex];
+    if (project.media.type !== 'mixed') return;
+    
+    const videoContainer = document.getElementById('videoContainer');
+    const mainImage = document.getElementById('mainImage');
+    if (videoContainer && mainImage) {
+        videoContainer.style.display = 'none';
+        mainImage.style.display = 'block';
+        mainImage.src = project.media.images[index];
+    }
+    
+    document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+        thumb.classList.toggle('active', i === index + 1);
+    });
+    
+    // Pause the video when switching to image
+    const video = document.getElementById('projectVideo');
+    if (video) {
+        video.pause();
+    }
+}
 
         function showProject(index) {
             currentProjectIndex = index;
+            currentImageIndex = 0;
             const project = projects[index];
             const details = document.getElementById('projectDetails');
+            
+            let contactLinks = '';
+            if (project.contact) {
+                contactLinks = `
+                    <div class="contact-links">
+                        ${project.contact.map(link => `<a href="${link.url}" target="_blank">${link.name}</a>`).join('')}
+                    </div>
+                `;
+            }
+
             details.innerHTML = `
                 <div class="project-image">
                     ${createMediaElement(project.media)}
@@ -249,26 +493,78 @@
                     <ul>
                         ${project.bullets.map(bullet => `<li>${bullet}</li>`).join('')}
                     </ul>
-                    <p>Download: ${project.download}</p>
+                    ${project.download ? `<p>Download: ${project.download}</p>` : ''}
                     ${project.trailer ? `<p>Trailer: <a href="${project.trailer}" target="_blank">Watch here</a></p>` : ''}
+                    ${contactLinks}
                 </div>
             `;
             updateActiveDoc();
         }
 
-        function updateActiveDoc() {
-            document.querySelectorAll('.doc-item').forEach((item, index) => {
-                item.classList.toggle('active', index === currentProjectIndex);
+        function changeImage(direction) {
+            const project = projects[currentProjectIndex];
+            if (project.media.type !== 'gallery') return;
+
+            const images = project.media.images;
+            currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+            updateGallery();
+        }
+
+        function setImage(index) {
+            currentImageIndex = index;
+            updateGallery();
+        }
+
+        function updateGallery() {
+            const project = projects[currentProjectIndex];
+            const mainImage = document.getElementById('mainImage');
+            if (!mainImage) return;
+
+            mainImage.src = project.media.images[currentImageIndex];
+            document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
+                thumb.classList.toggle('active', index === currentImageIndex);
             });
         }
 
-        function navigateProject(direction) {
-            currentProjectIndex = (currentProjectIndex + direction + projects.length) % projects.length;
-            showProject(currentProjectIndex);
+        function createDocNav() {
+            const nav = document.getElementById('docNav');
+            projects.forEach((project, index) => {
+                const docItem = document.createElement('div');
+                docItem.className = 'doc-item';
+                docItem.innerHTML = `<img src="${project.icon}" alt="${project.title}">`;
+                docItem.onclick = () => {
+                    const items = document.querySelectorAll('.doc-item');
+                    items.forEach((item, i) => {
+                        item.classList.remove('shifting-left', 'shifting-right');
+                        if (i < index) {
+                            item.classList.add('shifting-left');
+                        } else if (i > index) {
+                            item.classList.add('shifting-right');
+                        }
+                        setTimeout(() => {
+                            item.classList.remove('shifting-left', 'shifting-right');
+                        }, 300);
+                    });
+                    showProject(index);
+                };
+                nav.appendChild(docItem);
+            });
         }
 
+        function updateActiveDoc() {
+            document.querySelectorAll('.doc-item').forEach((item, index) => {
+                item.classList.remove('active');
+                if (index === currentProjectIndex) {
+                    setTimeout(() => {
+                        item.classList.add('active');
+                    }, 50);
+                }
+            });
+        }
+
+        // Initialize the portfolio
         createDocNav();
-        showProject(0); // Show first project by default
+        showProject(0);
     </script>
 </body>
 </html>
