@@ -79,7 +79,7 @@
 					
 
         .project-image {
-            flex: 1;
+            flex: 1.2;
             margin-bottom: 0;
             padding-right: 20px;
         }
@@ -149,6 +149,15 @@
             position: relative;
             width: 100%;
         }
+li {
+    margin-bottom: 15px;  /* Adds space between bullet points */
+    line-height: 1.5;     /* Improves readability with better line height */
+}
+
+/* Add this to remove extra space after the last bullet */
+li:last-child {
+    margin-bottom: 0;
+}
         .main-image {
             width: 100%;
             height: auto;
@@ -164,7 +173,7 @@
         .video-container video {
             width: 100%;
             height: auto;
-            max-height: 450px;
+            max-height: 500px;
             border-radius: 5px;
             object-fit: cover;
         }
@@ -226,6 +235,16 @@
             object-fit: cover;
             border-radius: 3px;
         }
+.project-info a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.project-info a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
         .arrow {
             position: fixed;
             top: 50%;
@@ -325,7 +344,7 @@
     <script>
         const projects = [
             
-            {
+           /* {
                 id: 'about',
                 title: 'About Me',
                 media: {
@@ -345,7 +364,7 @@
                     'Strong background in player psychology and game flow',
                     'Experienced in Agile and Scrum methodologies'
                 ]
-            },
+            },*/
             {
                 id: 'intro',
                 title: 'Game & Level Designer',
@@ -366,53 +385,70 @@
                 `
             },
             {
-                id: 'geostorm',
-                title: 'Geostorm (2017)',
+                id: 'blob',
+                title: 'We are Blob(2024)',
                 media: {
                     type: 'mixed',
                     video: {
-                        source: 'video.mp4',
-                        poster: 'https://via.placeholder.com/800x450.png?text=Geostorm+Screenshot'
+                        source: 'blobVid.mp4',
+                        poster: 'blobCover.png'
                     },
                     images: [
-                        'https://via.placeholder.com/800x450.png?text=Geostorm+1',
-                        'https://via.placeholder.com/800x450.png?text=Geostorm+2',
-                        'https://via.placeholder.com/800x450.png?text=Geostorm+3'
+                        'blob1.png',
+                        'blob2.png',
+                        'blob3.png'
                     ]
                 },
-                icon: 'blob.png',
-                tags: ['Game Design', 'Level Design'],
-                description: 'For this Lara Croft GO-inspired turn-based puzzle game I had to go back to my level design roots: puzzles. It was important to come up with mechanics that could interact with each other and serve multiple purposes, to maximize puzzle potential. When designing the levels itself, I always went for a unique narrative or catch. And with that narrative and setting in mind, decorating the levels with assets and turning it into a real environment went smooth as butter!',
-                bullets: [
-                    'Designed over 20 puzzles',
-                    'Level decoration',
-                    'Puzzle mechanics'
-                ],
-                download: 'App Store, Google Play'
+         icon: 'blob.png',
+tags: ['Lead Game Programmer', 'Narrative Design', 'Game Design'],
+description: '"We are Blob" is a cozy point-and-click game that follows the journey of Blob, a newly hired game developer racing against time to complete their first game within a week. This lighthearted narrative-driven experience combines resource management with engaging storytelling.',
+bullets: [
+    'Led and managed a team of four programmers, providing technical direction and ensuring project milestones were met',
+    'Established coding standards and best practices for the development team',
+    'Coordinated with other departments to maintain project cohesion and meet deliverables',
+    'Architected and implemented the game\'s fundamental currency system',
+    'Designed and developed a robust save/load mechanism',
+    'Created the main game flow architecture and state management',
+    'Integrated multiple interconnected systems including health, hunger, and sleep mechanics',
+    'Wrote and implemented tutorial sequences',
+    'Implemented cutscene systems and dialogue triggers throughout the game',
+    'Created and fine-tuned the interconnected resource management systems (currency, sleep meter, health, and hunger)'
+],
+download: '<a href="https://store.steampowered.com/app/3161290/We_are_Blob/">We are Blob</a>',
+research: 'This game served as a practical implementation of my research as I used the the knowledge that I gained on how game narratives can dynamically adapt to player choices and create dynamic environments. This helped me create  multiple story branches for the game which lead to multiple different endings and giving the player not one but mutiple scenarios to play through which led to player replayablility.'
             },
             {
-                id: 'kingarthur',
-                title: 'King Arthur: Legend of the Sword (2017)',
+                id: 'galleryofgreed',
+                title: 'Gallery of Greed (2024)',
                 media: {
-                    type: 'gallery',
+                    type: 'mixed',
+		    video: {
+                        source: 'video.mp4',
+                        poster: 'gog1.png'
+                    },
+
                     images: [
-                        'https://via.placeholder.com/800x450.png?text=King+Arthur+1',
-                        'https://via.placeholder.com/800x450.png?text=King+Arthur+2',
-                        'https://via.placeholder.com/800x450.png?text=King+Arthur+3',
-                        'https://via.placeholder.com/800x450.png?text=King+Arthur+4'
+                        'gog2.png',
+                        'gog3.png',
+                        'gog4.png',
+                        
                     ]
                 },
                 icon: 'gog.png',
-                tags: ['Mission Design', 'VFX', 'Scripting'],
-                description: 'Worked on mission design, visual effects, and scripting for this action game based on the movie.',
-                bullets: [
-                    'Mission design and spawnroutes',
-                    'Camera curves',
-                    'Creation of visual effects',
-                    'Scripting implementation of effects (C#)'
-                ],
-                download: 'http://game.kingarthurmovie.com/',
-                trailer: 'https://youtu.be/Br0xnUCK0'
+tags: ['Producer', 'Game Design', 'Level Design', 'Gameplay Programmer'],
+description: 'Gallery of Greed is a first-person puzzle heist game where players attempt to steal a priceless crown from a Renaissance art gallery. Upon acquiring the crown, the gallery goes into immediate lockdown, forcing players to solve various art and culture-inspired puzzles to escape before security catches them. Racing against time, players must navigate through the ornate halls, manipulating statues, arranging chess pieces, and bypassing security systems to make their escape with the stolen artifact.',
+bullets: [
+   'Led project management and team coordination throughout the development cycle',
+   'Created comprehensive documentation including production plans, capacity plans, and burn-down charts',
+   'Maintained and tracked task lists to ensure timely project completion',
+   'Facilitated team communication and workflow optimization',
+   'Designed multiple puzzle mechanics centered around an art gallery theme',
+   'Orchestrated asset placement and environment design to create an intuitive yet challenging gallery layout',
+   'Balanced accessibility with puzzle complexity through strategic environmental storytelling',
+   'Developed core interaction systems like keypad security system, Chess piece interaction system, Game-wide timer system',
+  
+],
+research: 'This project was developed as part of my exploration into dynamic environments where player will experience different environments based on the choices that they make. The knowledge that I gained from my reserach helped me in making an interactable environment where player can learn and progress further and make choices by interacting with the environment and this led to environmental storytelling which is a key find of my research.'
             }
         ];
 
@@ -538,6 +574,7 @@
                     </ul>
                     ${project.download ? `<p>Download: ${project.download}</p>` : ''}
                     ${project.trailer ? `<p>Trailer: <a href="${project.trailer}" target="_blank">Watch here</a></p>` : ''}
+${project.research ? `<p style="margin-top: 20px; font-style: italic;">${project.research}</p>` : ''}
                     ${contactLinks}
                 </div>
             `;
@@ -611,10 +648,10 @@
         // Initialize the portfolio with proper highlight
         window.onload = function() {
             createDocNav();
-            showProject(1);
+            showProject(0);
             // Force correct highlighting of the first nav item
             document.querySelectorAll('.doc-item').forEach((item, index) => {
-                item.classList.toggle('active', index === 1);
+                item.classList.toggle('active', index === 0);
             });
         };
     </script>
