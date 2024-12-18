@@ -38,64 +38,122 @@
             justify-content: center;
             align-items: center;
             height: 110%;
-            text-align: center;
             max-width: 850px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        .intro-content h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            color: #333;
+        .text-container {
+            text-align: left;
+            width: 100%;
+            max-width: 650px;
+            margin: 0 auto;
         }
 
-        .skills-tags {
-            margin: 10px 0;
+        .skills-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .intro-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            color: #333;
+            text-align: center;
+        }
+
+        .intro-content h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
         }
 
         .intro-content p {
             line-height: 1.6;
-            margin-bottom: 0px;
+            margin-bottom: 20px;
         }
 
         .social-links {
             display: flex;
             gap: 20px;
-            margin-top: 30px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            align-items: center;
+            justify-content: center;
         }
 
         .social-links a {
             color: #333;
             text-decoration: none;
-            font-size: 35px;
+            padding: 8px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            width: 32px;
+            height: 32px;
+            background: transparent;
+            border: 2px solid #333;
         }
 
-	.social-links a[href^="mailto"] {
-    	    transform: translateY(-4px);
+        .social-links a:hover {
+            background-color: transparent;
+            transform: translateY(-2px);
+            color: #007bff;
+            border-color: #007bff;
+        }
+
+        .social-links a[href^="mailto"] {
+            font-size: 22px;
+        }
+
+        .tag {
+            flex: 1;
+            text-align: center;
             display: inline-block;
-	}
-	
-					
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .project-tag {
+            display: inline-block;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .tag-game-design { background-color: #007bff; }
+        .tag-level-design { background-color: #9c27b0; }
+        .tag-narrative-design { background-color: #607d8b; }
+        .tag-technical { background-color: #e91e63; }
+        .tag-producer { background-color: #28a745; }
+        .tag-gameplay { background-color: #fd7e14; }
 
         .project-image {
             flex: 1.2;
             margin-bottom: 0;
             padding-right: 20px;
         }
+        
         .project-info {
             flex: 1;
             overflow-y: auto;
         }
-        .tag {
-            display: inline-block;
-            background-color: #007bff;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 3px;
-            margin-right: 5px;
-            margin-bottom: 5px;
-        }
+
         .doc-nav {
             display: flex;
             justify-content: center;
@@ -105,6 +163,7 @@
             align-items: center;
             gap: 15px;    
         }
+
         .doc-item {
             flex: 0 0 auto;
             width: 80px;
@@ -120,18 +179,21 @@
                     0 4px 8px rgba(0,0,0,0.1);
             background: #fff;
         }
+
         .doc-item:hover {
             transform: scale(1.1) translateY(-2px);
             z-index: 2;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2), 
                     0 8px 16px rgba(0,0,0,0.2);
         }
+
         .doc-item.active {
             transform: scale(1.2) translateY(-4px);
             z-index: 3;
             box-shadow: 0 6px 12px rgba(0,0,0,0.2), 
                     0 12px 24px rgba(0,0,0,0.2);
         }
+
         .doc-item img {
             width: 100%;
             height: 100%;
@@ -139,44 +201,41 @@
             border-radius: 18px;
             transition: all 0.3s ease;
         }
-        .doc-item.shifting-left {
-            transform: translateX(-10px);
-        }
-        .doc-item.shifting-right {
-            transform: translateX(10px);
-        }
+
         .gallery-container {
             position: relative;
             width: 100%;
         }
-li {
-    margin-bottom: 15px;  /* Adds space between bullet points */
-    line-height: 1.5;     /* Improves readability with better line height */
-}
 
-/* Add this to remove extra space after the last bullet */
-li:last-child {
-    margin-bottom: 0;
-}
-        .main-image {
-            width: 100%;
-            height: auto;
-            max-height: 450px;
-            object-fit: cover;
-            border-radius: 5px;
-            margin-bottom: 10px;
+        li {
+            margin-bottom: 15px;
+            line-height: 1.5;
         }
+
+        li:last-child {
+            margin-bottom: 0;
+        }
+
         .video-container {
             width: 100%;
             margin-bottom: 10px;
         }
+
         .video-container video {
             width: 100%;
-            height: auto;
-            max-height: 500px;
-            border-radius: 5px;
+            height: 400px;
             object-fit: cover;
+            border-radius: 8px;
         }
+
+        .main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
         .video-controls {
             margin-top: 10px;
             margin-bottom: 20px;
@@ -184,6 +243,7 @@ li:last-child {
             gap: 10px;
             justify-content: center;
         }
+
         .video-controls button {
             padding: 5px 15px;
             background-color: #007bff;
@@ -192,9 +252,11 @@ li:last-child {
             border-radius: 3px;
             cursor: pointer;
         }
+
         .video-controls button:hover {
             background-color: #0056b3;
         }
+
         .thumbnail-container {
             display: flex;
             gap: 10px;
@@ -203,48 +265,57 @@ li:last-child {
             scrollbar-width: thin;
             scrollbar-color: #007bff #f0f0f0;
         }
+
         .thumbnail-container::-webkit-scrollbar {
             height: 8px;
         }
+
         .thumbnail-container::-webkit-scrollbar-track {
             background: #f0f0f0;
             border-radius: 4px;
         }
+
         .thumbnail-container::-webkit-scrollbar-thumb {
             background: #007bff;
             border-radius: 4px;
         }
+
         .thumbnail {
             flex: 0 0 auto;
-            width: 120px;
-            height: 68px;
+            width: 100px;
+            height: 100px;
             border: 2px solid transparent;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
+            overflow: hidden;
         }
+
         .thumbnail:hover {
             transform: translateY(-2px);
         }
+
         .thumbnail.active {
             border-color: #007bff;
         }
+
         .thumbnail img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 3px;
         }
-.project-info a {
-    color: #007bff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
 
-.project-info a:hover {
-    color: #0056b3;
-    text-decoration: underline;
-}
+        .project-info a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .project-info a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
         .arrow {
             position: fixed;
             top: 50%;
@@ -263,40 +334,17 @@ li:last-child {
             font-size: 25px;
             transition: background-color 0.3s;
         }
-.tag-game-design {
-    background-color: #007bff; /* brown */
-}
-.tag-level-design {
-    background-color: #9c27b0; /* purple */
-}
-.tag-narrative-design {
-    background-color: #607d8b; /* blue-grey */
-}
-.tag-technical {
-    background-color: #e91e63; /* pink */
-}
+
         .arrow:hover {
-            background: rgba(0, 0, 0, 0);
+            background: rgba(0, 0, 0, 0.1);
         }
+
         .arrow-left {
             left: 10px;
         }
+
         .arrow-right {
             right: 10px;
-        }
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .contact-links a {
-            text-decoration: none;
-            color: #007bff;
-            font-weight: bold;
-        }
-        .contact-links a:hover {
-            text-decoration: underline;
         }
 
         @media (min-width: 768px) {
@@ -321,14 +369,26 @@ li:last-child {
                 font-size: 16px;
             }
             .arrow-left {
-                left: 10px;
+                left: 5px;
             }
             .arrow-right {
-                right: 10px;
+                right: 5px;
             }
             .thumbnail {
                 width: 80px;
-                height: 45px;
+                height: 80px;
+            }
+            .intro-content h1 {
+                font-size: 2.5em;
+            }
+            .intro-content h2 {
+                font-size: 1.5em;
+            }
+            .skills-container {
+                flex-direction: column;
+            }
+            .tag {
+                width: 100%;
             }
         }
     </style>
@@ -340,31 +400,8 @@ li:last-child {
     </div>
     <div class="arrow arrow-left" onclick="navigateProject(-1)">❮</div>
     <div class="arrow arrow-right" onclick="navigateProject(1)">❯</div>
-
-    <script>
+	<script>
         const projects = [
-            
-           /* {
-                id: 'about',
-                title: 'About Me',
-                media: {
-                    type: 'gallery',
-                    images: [
-                        'https://via.placeholder.com/800x450.png?text=About+Me',
-                        'https://via.placeholder.com/800x450.png?text=Skills',
-                        'https://via.placeholder.com/800x450.png?text=Experience'
-                    ]
-                },
-                icon: 'myself.png',
-                tags: ['Biography', 'Skills'],
-                description: 'With over 5 years of experience in the game industry, I\'ve worked on diverse projects ranging from mobile puzzle games to high-budget action titles. My approach to game design is holistic - I believe great games are born from the seamless integration of mechanics, narrative, and player interaction.',
-                bullets: [
-                    'Graduated with a degree in Game Design from XYZ University',
-                    'Proficient in C#, Unity, Unreal Engine, and visual scripting',
-                    'Strong background in player psychology and game flow',
-                    'Experienced in Agile and Scrum methodologies'
-                ]
-            },*/
             {
                 id: 'intro',
                 title: 'Game & Level Designer',
@@ -372,14 +409,32 @@ li:last-child {
                 icon: 'home.png',
                 render: () => `
     <div class="intro-content">
-        <h1><strong>Game Designer & Programmer</strong></h1>
-        <p>Ever wished you could step inside a story instead of just watching it unfold? That's exactly what I do. I'm <strong><em>Akul Arora</em></strong>, a game developer who transforms imagination into playable reality. With 4 years of crafting interactive experiences across <span class="tag tag-game-design">Game Design</span> <span class="tag tag-level-design">Level Design</span> <span class="tag tag-narrative-design">Narrative Design</span> <span class="tag tag-technical">Technical Systems</span>. I specialize in creating worlds that players love to call home.</p>
+        <h1><strong>Akul Arora</strong></h1>
+        <h2><strong>Game Designer & Programmer</strong></h2>
+        <div class="text-container">
+            <p>Ever wished you could step inside a story instead of just watching it unfold? That's exactly what I do. With 4 years of crafting interactive experiences across:</p>
+            
+            <div class="skills-container">
+                <span class="tag tag-game-design">Game Design</span>
+                <span class="tag tag-level-design">Level Design</span>
+                <span class="tag tag-narrative-design">Narrative Design</span>
+                <span class="tag tag-technical">Technical Systems</span>
+            </div>
+            
+            <p>I specialize in creating worlds that players love to call home.</p>
+            
+            <p>Think of games as portals to new realities – while books and movies show you the door, I create the keys to walk through it. My toolkit combines technical wizardry with storytelling magic, bringing ideas to life in ways that players can touch, explore, and shape.</p>
+            
+            <p>Armed with code in one hand and creativity in the other, I'm on a mission to build games that don't just entertain – they transport, transform, and leave players with experiences they'll never forget.</p>
+        </div>
         
-        <p>Think of games as portals to new realities – while books and movies show you the door, I create the keys to walk through it. My toolkit combines technical wizardry with storytelling magic, bringing ideas to life in ways that players can touch, explore, and shape.</p>
-        <p>Armed with code in one hand and creativity in the other, I'm on a mission to build games that don't just entertain – they transport, transform, and leave players with experiences they'll never forget.</p>
         <div class="social-links">
-            <a href="https://www.linkedin.com/in/akularora99/" target="_blank">in</a>
-            <a href="mailto:akularora99@gmail.com">✉</a>
+            <a href="https://www.linkedin.com/in/akularora99/" target="_blank" aria-label="LinkedIn Profile">
+                <span style="font-family: Arial;">in</span>
+            </a>
+            <a href="mailto:akularora99@gmail.com" aria-label="Email Contact">
+                ✉
+            </a>
         </div>
     </div>
                 `
@@ -399,56 +454,62 @@ li:last-child {
                         'blob3.png'
                     ]
                 },
-         icon: 'blob.png',
-tags: ['Lead Game Programmer', 'Narrative Design', 'Game Design'],
-description: '"We are Blob" is a cozy point-and-click game that follows the journey of Blob, a newly hired game developer racing against time to complete their first game within a week. This lighthearted narrative-driven experience combines resource management with engaging storytelling.',
-bullets: [
-    'Led and managed a team of four programmers, providing technical direction and ensuring project milestones were met',
-    'Established coding standards and best practices for the development team',
-    'Coordinated with other departments to maintain project cohesion and meet deliverables',
-    'Architected and implemented the game\'s fundamental currency system',
-    'Designed and developed a robust save/load mechanism',
-    'Created the main game flow architecture and state management',
-    'Integrated multiple interconnected systems including health, hunger, and sleep mechanics',
-    'Wrote and implemented tutorial sequences',
-    'Implemented cutscene systems and dialogue triggers throughout the game',
-    'Created and fine-tuned the interconnected resource management systems (currency, sleep meter, health, and hunger)'
-],
-download: '<a href="https://store.steampowered.com/app/3161290/We_are_Blob/">We are Blob</a>',
-research: 'This game served as a practical implementation of my research as I used the the knowledge that I gained on how game narratives can dynamically adapt to player choices and create dynamic environments. This helped me create  multiple story branches for the game which lead to multiple different endings and giving the player not one but mutiple scenarios to play through which led to player replayablility.'
+                icon: 'blob.png',
+                tags: [
+                    { text: 'Lead Game Programmer', class: 'tag-technical' },
+                    { text: 'Narrative Design', class: 'tag-narrative-design' },
+                    { text: 'Game Design', class: 'tag-game-design' }
+                ],
+                description: '"We are Blob" is a cozy point-and-click game that follows the journey of Blob, a newly hired game developer racing against time to complete their first game within a week. This lighthearted narrative-driven experience combines resource management with engaging storytelling.',
+                bullets: [
+                    'Led and managed a team of four programmers, providing technical direction and ensuring project milestones were met',
+                    'Established coding standards and best practices for the development team',
+                    'Coordinated with other departments to maintain project cohesion and meet deliverables',
+                    'Architected and implemented the game\'s fundamental currency system',
+                    'Designed and developed a robust save/load mechanism',
+                    'Created the main game flow architecture and state management',
+                    'Integrated multiple interconnected systems including health, hunger, and sleep mechanics',
+                    'Wrote and implemented tutorial sequences',
+                    'Implemented cutscene systems and dialogue triggers throughout the game',
+                    'Created and fine-tuned the interconnected resource management systems (currency, sleep meter, health, and hunger)'
+                ],
+                download: '<a href="https://store.steampowered.com/app/3161290/We_are_Blob/">We are Blob</a>',
+                research: 'This game served as a practical implementation of my research as I used the knowledge that I gained on how game narratives can dynamically adapt to player choices and create dynamic environments. This helped me create multiple story branches for the game which lead to multiple different endings and giving the player not one but mutiple scenarios to play through which led to player replayablility.'
             },
             {
                 id: 'galleryofgreed',
                 title: 'Gallery of Greed (2024)',
                 media: {
                     type: 'mixed',
-		    video: {
+                    video: {
                         source: 'video.mp4',
                         poster: 'gog1.png'
                     },
-
                     images: [
                         'gog2.png',
                         'gog3.png',
-                        'gog4.png',
-                        
+                        'gog4.png'
                     ]
                 },
                 icon: 'gog.png',
-tags: ['Producer', 'Game Design', 'Level Design', 'Gameplay Programmer'],
-description: 'Gallery of Greed is a first-person puzzle heist game where players attempt to steal a priceless crown from a Renaissance art gallery. Upon acquiring the crown, the gallery goes into immediate lockdown, forcing players to solve various art and culture-inspired puzzles to escape before security catches them. Racing against time, players must navigate through the ornate halls, manipulating statues, arranging chess pieces, and bypassing security systems to make their escape with the stolen artifact.',
-bullets: [
-   'Led project management and team coordination throughout the development cycle',
-   'Created comprehensive documentation including production plans, capacity plans, and burn-down charts',
-   'Maintained and tracked task lists to ensure timely project completion',
-   'Facilitated team communication and workflow optimization',
-   'Designed multiple puzzle mechanics centered around an art gallery theme',
-   'Orchestrated asset placement and environment design to create an intuitive yet challenging gallery layout',
-   'Balanced accessibility with puzzle complexity through strategic environmental storytelling',
-   'Developed core interaction systems like keypad security system, Chess piece interaction system, Game-wide timer system',
-  
-],
-research: 'This project was developed as part of my exploration into dynamic environments where player will experience different environments based on the choices that they make. The knowledge that I gained from my reserach helped me in making an interactable environment where player can learn and progress further and make choices by interacting with the environment and this led to environmental storytelling which is a key find of my research.'
+                tags: [
+                    { text: 'Producer', class: 'tag-producer' },
+                    { text: 'Game Design', class: 'tag-game-design' },
+                    { text: 'Level Design', class: 'tag-level-design' },
+                    { text: 'Gameplay Programmer', class: 'tag-technical' }
+                ],
+                description: 'Gallery of Greed is a first-person puzzle heist game where players attempt to steal a priceless crown from a Renaissance art gallery. Upon acquiring the crown, the gallery goes into immediate lockdown, forcing players to solve various art and culture-inspired puzzles to escape before security catches them. Racing against time, players must navigate through the ornate halls, manipulating statues, arranging chess pieces, and bypassing security systems to make their escape with the stolen artifact.',
+                bullets: [
+                    'Led project management and team coordination throughout the development cycle',
+                    'Created comprehensive documentation including production plans, capacity plans, and burn-down charts',
+                    'Maintained and tracked task lists to ensure timely project completion',
+                    'Facilitated team communication and workflow optimization',
+                    'Designed multiple puzzle mechanics centered around an art gallery theme',
+                    'Orchestrated asset placement and environment design to create an intuitive yet challenging gallery layout',
+                    'Balanced accessibility with puzzle complexity through strategic environmental storytelling',
+                    'Developed core interaction systems like keypad security system, Chess piece interaction system, Game-wide timer system'
+                ],
+                research: 'This project was developed as part of my exploration into dynamic environments where player will experience different environments based on the choices that they make. The knowledge that I gained from my reserach helped me in making an interactable environment where player can learn and progress further and make choices by interacting with the environment and this led to environmental storytelling which is a key find of my research.'
             }
         ];
 
@@ -550,15 +611,6 @@ research: 'This project was developed as part of my exploration into dynamic env
                 return;
             }
             
-            let contactLinks = '';
-            if (project.contact) {
-                contactLinks = `
-                    <div class="contact-links">
-                        ${project.contact.map(link => `<a href="${link.url}" target="_blank">${link.name}</a>`).join('')}
-                    </div>
-                `;
-            }
-
             details.innerHTML = `
                 <div class="project-image">
                     ${createMediaElement(project.media)}
@@ -566,7 +618,7 @@ research: 'This project was developed as part of my exploration into dynamic env
                 <div class="project-info">
                     <h2>${project.title}</h2>
                     <div>
-                        ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        ${project.tags.map(tag => `<span class="project-tag ${tag.class}">${tag.text}</span>`).join('')}
                     </div>
                     <p>${project.description}</p>
                     <ul>
@@ -574,36 +626,10 @@ research: 'This project was developed as part of my exploration into dynamic env
                     </ul>
                     ${project.download ? `<p>Download: ${project.download}</p>` : ''}
                     ${project.trailer ? `<p>Trailer: <a href="${project.trailer}" target="_blank">Watch here</a></p>` : ''}
-${project.research ? `<p style="margin-top: 20px; font-style: italic;">${project.research}</p>` : ''}
-                    ${contactLinks}
+                    ${project.research ? `<p style="margin-top: 20px; font-style: italic;">${project.research}</p>` : ''}
                 </div>
             `;
             updateActiveDoc();
-        }
-
-        function changeImage(direction) {
-            const project = projects[currentProjectIndex];
-            if (!project.media || project.media.type !== 'gallery') return;
-
-            const images = project.media.images;
-            currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
-            updateGallery();
-        }
-
-        function setImage(index) {
-            currentImageIndex = index;
-            updateGallery();
-        }
-
-        function updateGallery() {
-            const project = projects[currentProjectIndex];
-            const mainImage = document.getElementById('mainImage');
-            if (!mainImage || !project.media) return;
-
-            mainImage.src = project.media.images[currentImageIndex];
-            document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
-                thumb.classList.toggle('active', index === currentImageIndex);
-            });
         }
 
         function navigateProject(direction) {
@@ -645,11 +671,9 @@ ${project.research ? `<p style="margin-top: 20px; font-style: italic;">${project
             });
         }
 
-        // Initialize the portfolio with proper highlight
         window.onload = function() {
             createDocNav();
             showProject(0);
-            // Force correct highlighting of the first nav item
             document.querySelectorAll('.doc-item').forEach((item, index) => {
                 item.classList.toggle('active', index === 0);
             });
