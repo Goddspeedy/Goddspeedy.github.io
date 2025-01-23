@@ -400,14 +400,16 @@
     </div>
     <div class="arrow arrow-left" onclick="navigateProject(-1)">❮</div>
     <div class="arrow arrow-right" onclick="navigateProject(1)">❯</div>
-	<script>
-        const projects = [
-            {
-                id: 'intro',
-                title: 'Game & Level Designer',
-                customContent: true,
-                icon: 'home.png',
-                render: () => `
+</body>
+</html>
+<script>
+const projects = [
+    {
+        id: 'intro',
+        title: 'Game & Level Designer',
+        customContent: true,
+        icon: 'home.png',
+        render: () => `
     <div class="intro-content">
         <h1><strong>Akul Arora</strong></h1>
         <h2><strong>Game Designer & Programmer</strong></h2>
@@ -437,247 +439,241 @@
             </a>
         </div>
     </div>
-                `
+        `
+    },
+    {
+        id: 'blob',
+        title: 'We are Blob(2024)',
+        media: {
+            type: 'mixed',
+            video: {
+                source: 'blobVid.mp4',
+                poster: 'blobCover.png'
             },
-            {
-                id: 'blob',
-                title: 'We are Blob(2024)',
-                media: {
-                    type: 'mixed',
-                    video: {
-                        source: 'blobVid.mp4',
-                        poster: 'blobCover.png'
-                    },
-                    images: [
-                        'blob1.png',
-                        'blob2.png',
-                        'blob3.png'
-                    ]
-                },
-                icon: 'blob.png',
-                tags: [
-                    { text: 'Lead Game Programmer', class: 'tag-technical' },
-                    { text: 'Narrative Design', class: 'tag-narrative-design' },
-                    { text: 'Game Design', class: 'tag-game-design' }
-                ],
-                description: '"We are Blob" is a cozy point-and-click game that follows the journey of Blob, a newly hired game developer racing against time to complete their first game within a week. This lighthearted narrative-driven experience combines resource management with engaging storytelling.',
-                bullets: [
-                    'Led and managed a team of four programmers, providing technical direction and ensuring project milestones were met',
-                    'Established coding standards and best practices for the development team',
-                    'Coordinated with other departments to maintain project cohesion and meet deliverables',
-                    'Architected and implemented the game\'s fundamental currency system',
-                    'Designed and developed a robust save/load mechanism',
-                    'Created the main game flow architecture and state management',
-                    'Integrated multiple interconnected systems including health, hunger, and sleep mechanics',
-                    'Wrote and implemented tutorial sequences',
-                    'Implemented cutscene systems and dialogue triggers throughout the game',
-                    'Created and fine-tuned the interconnected resource management systems (currency, sleep meter, health, and hunger)'
-                ],
-                download: '<a href="https://store.steampowered.com/app/3161290/We_are_Blob/">We are Blob</a>',
-                research: 'This game served as a practical implementation of my research as I used the knowledge that I gained on how game narratives can dynamically adapt to player choices and create dynamic environments. This helped me create multiple story branches for the game which lead to multiple different endings and giving the player not one but mutiple scenarios to play through which led to player replayablility.'
+            images: [
+                'blob1.png',
+                'blob2.png',
+                'blob3.png'
+            ]
+        },
+        icon: 'blob.png',
+        tags: [
+            { text: 'Lead Game Programmer', class: 'tag-technical' },
+            { text: 'Narrative Design', class: 'tag-narrative-design' },
+            { text: 'Game Design', class: 'tag-game-design' }
+        ],
+        description: '"We are Blob" is a cozy point-and-click game that follows the journey of Blob, a newly hired game developer racing against time to complete their first game within a week. This lighthearted narrative-driven experience combines resource management with engaging storytelling.',
+        bullets: [
+            'Led and managed a team of four programmers, providing technical direction and ensuring project milestones were met',
+            'Established coding standards and best practices for the development team',
+            'Coordinated with other departments to maintain project cohesion and meet deliverables',
+            'Architected and implemented the game\'s fundamental currency system',
+            'Designed and developed a robust save/load mechanism',
+            'Created the main game flow architecture and state management',
+            'Integrated multiple interconnected systems including health, hunger, and sleep mechanics',
+            'Wrote and implemented tutorial sequences',
+            'Implemented cutscene systems and dialogue triggers throughout the game',
+'Created and fine-tuned the interconnected resource management systems (currency, sleep meter, health, and hunger)'
+        ],
+        download: '<a href="https://store.steampowered.com/app/3161290/We_are_Blob/">We are Blob</a>'
+    },
+    {
+        id: 'galleryofgreed',
+        title: 'Gallery of Greed (2024)',
+        media: {
+            type: 'mixed',
+            video: {
+                source: 'video.mp4',
+                poster: 'gog1.png'
             },
-            {
-                id: 'galleryofgreed',
-                title: 'Gallery of Greed (2024)',
-                media: {
-                    type: 'mixed',
-                    video: {
-                        source: 'video.mp4',
-                        poster: 'gog1.png'
-                    },
-                    images: [
-                        'gog2.png',
-                        'gog3.png',
-                        'gog4.png'
-                    ]
-                },
-                icon: 'gog.png',
-                tags: [
-                    { text: 'Producer', class: 'tag-producer' },
-                    { text: 'Game Design', class: 'tag-game-design' },
-                    { text: 'Level Design', class: 'tag-level-design' },
-                    { text: 'Gameplay Programmer', class: 'tag-technical' }
-                ],
-                description: 'Gallery of Greed is a first-person puzzle heist game where players attempt to steal a priceless crown from a Renaissance art gallery. Upon acquiring the crown, the gallery goes into immediate lockdown, forcing players to solve various art and culture-inspired puzzles to escape before security catches them. Racing against time, players must navigate through the ornate halls, manipulating statues, arranging chess pieces, and bypassing security systems to make their escape with the stolen artifact.',
-                bullets: [
-                    'Led project management and team coordination throughout the development cycle',
-                    'Created comprehensive documentation including production plans, capacity plans, and burn-down charts',
-                    'Maintained and tracked task lists to ensure timely project completion',
-                    'Facilitated team communication and workflow optimization',
-                    'Designed multiple puzzle mechanics centered around an art gallery theme',
-                    'Orchestrated asset placement and environment design to create an intuitive yet challenging gallery layout',
-                    'Balanced accessibility with puzzle complexity through strategic environmental storytelling',
-                    'Developed core interaction systems like keypad security system, Chess piece interaction system, Game-wide timer system'
-                ],
-                research: 'This project was developed as part of my exploration into dynamic environments where player will experience different environments based on the choices that they make. The knowledge that I gained from my reserach helped me in making an interactable environment where player can learn and progress further and make choices by interacting with the environment and this led to environmental storytelling which is a key find of my research.'
-            }
-        ];
+            images: [
+                'gog2.png',
+                'gog3.png',
+                'gog4.png'
+            ]
+        },
+        icon: 'gog.png',
+        tags: [
+            { text: 'Producer', class: 'tag-producer' },
+            { text: 'Game Design', class: 'tag-game-design' },
+            { text: 'Level Design', class: 'tag-level-design' },
+            { text: 'Gameplay Programmer', class: 'tag-technical' }
+        ],
+        description: 'Gallery of Greed is a first-person puzzle heist game where players attempt to steal a priceless crown from a Renaissance art gallery. Upon acquiring the crown, the gallery goes into immediate lockdown, forcing players to solve various art and culture-inspired puzzles to escape before security catches them. Racing against time, players must navigate through the ornate halls, manipulating statues, arranging chess pieces, and bypassing security systems to make their escape with the stolen artifact.',
+        bullets: [
+            'Led project management and team coordination throughout the development cycle',
+            'Created comprehensive documentation including production plans, capacity plans, and burn-down charts',
+            'Maintained and tracked task lists to ensure timely project completion',
+            'Facilitated team communication and workflow optimization',
+            'Designed multiple puzzle mechanics centered around an art gallery theme',
+            'Orchestrated asset placement and environment design to create an intuitive yet challenging gallery layout',
+            'Balanced accessibility with puzzle complexity through strategic environmental storytelling',
+            'Developed core interaction systems like keypad security system, Chess piece interaction system, Game-wide timer system'
+        ]
+    }
+];
 
-        let currentProjectIndex = 0;
-        let currentImageIndex = 0;
+let currentProjectIndex = 0;
+let currentImageIndex = 0;
 
-        function createMediaElement(media) {
-            if (!media) return '';
-            
-            if (media.type === 'gallery') {
-                return `
-                    <div class="gallery-container">
-                        <img src="${media.images[0]}" alt="Project image" class="main-image" id="mainImage">
-                        <div class="thumbnail-container">
-                            ${media.images.map((img, index) => `
-                                <div class="thumbnail ${index === 0 ? 'active' : ''}" onclick="setImage(${index})">
-                                    <img src="${img}" alt="Thumbnail ${index + 1}">
-                                </div>
-                            `).join('')}
+function createMediaElement(media) {
+    if (!media) return '';
+    
+    if (media.type === 'gallery') {
+        return `
+            <div class="gallery-container">
+                <img src="${media.images[0]}" alt="Project image" class="main-image" id="mainImage">
+                <div class="thumbnail-container">
+                    ${media.images.map((img, index) => `
+                        <div class="thumbnail ${index === 0 ? 'active' : ''}" onclick="setImage(${index})">
+                            <img src="${img}" alt="Thumbnail ${index + 1}">
                         </div>
-                    </div>
-                `;
-            } else if (media.type === 'mixed') {
-                return `
-                    <div class="gallery-container">
-                        <div id="mediaDisplay">
-                            <div class="video-container" id="videoContainer">
-                                <video id="projectVideo" controls poster="${media.video.poster}">
-                                    <source src="${media.video.source}" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                                <div class="video-controls">
-                                    <button onclick="document.getElementById('projectVideo').play()">Play</button>
-                                    <button onclick="document.getElementById('projectVideo').pause()">Pause</button>
-                                </div>
-                            </div>
-                            <img src="${media.images[0]}" alt="Project image" class="main-image" id="mainImage" style="display: none;">
-                        </div>
-                        <div class="thumbnail-container">
-                            <div class="thumbnail active" onclick="switchToVideo()">
-                                <img src="${media.video.poster}" alt="Video thumbnail">
-                            </div>
-                            ${media.images.map((img, index) => `
-                                <div class="thumbnail" onclick="switchToImage(${index})">
-                                    <img src="${img}" alt="Thumbnail ${index + 1}">
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-            }
-            return '';
-        }
-
-        function switchToVideo() {
-            const videoContainer = document.getElementById('videoContainer');
-            const mainImage = document.getElementById('mainImage');
-            if (videoContainer && mainImage) {
-                videoContainer.style.display = 'block';
-                mainImage.style.display = 'none';
-            }
-            
-            document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
-                thumb.classList.toggle('active', index === 0);
-            });
-        }
-
-        function switchToImage(index) {
-            const project = projects[currentProjectIndex];
-            if (project.media && project.media.type !== 'mixed') return;
-            
-            const videoContainer = document.getElementById('videoContainer');
-            const mainImage = document.getElementById('mainImage');
-            if (videoContainer && mainImage) {
-                videoContainer.style.display = 'none';
-                mainImage.style.display = 'block';
-                mainImage.src = project.media.images[index];
-            }
-            
-            document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
-                thumb.classList.toggle('active', i === index + 1);
-            });
-            
-            const video = document.getElementById('projectVideo');
-            if (video) {
-                video.pause();
-            }
-        }
-
-        function showProject(index) {
-            currentProjectIndex = index;
-            currentImageIndex = 0;
-            const project = projects[index];
-            const details = document.getElementById('projectDetails');
-            
-            if (project.customContent) {
-                details.innerHTML = project.render();
-                updateActiveDoc();
-                return;
-            }
-            
-            details.innerHTML = `
-                <div class="project-image">
-                    ${createMediaElement(project.media)}
+                    `).join('')}
                 </div>
-                <div class="project-info">
-                    <h2>${project.title}</h2>
-                    <div>
-                        ${project.tags.map(tag => `<span class="project-tag ${tag.class}">${tag.text}</span>`).join('')}
+            </div>
+        `;
+    } else if (media.type === 'mixed') {
+        return `
+            <div class="gallery-container">
+                <div id="mediaDisplay">
+                    <div class="video-container" id="videoContainer">
+                        <video id="projectVideo" controls poster="${media.video.poster}">
+                            <source src="${media.video.source}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="video-controls">
+                            <button onclick="document.getElementById('projectVideo').play()">Play</button>
+                            <button onclick="document.getElementById('projectVideo').pause()">Pause</button>
+                        </div>
                     </div>
-                    <p>${project.description}</p>
-                    <ul>
-                        ${project.bullets.map(bullet => `<li>${bullet}</li>`).join('')}
-                    </ul>
-                    ${project.download ? `<p>Download: ${project.download}</p>` : ''}
-                    ${project.trailer ? `<p>Trailer: <a href="${project.trailer}" target="_blank">Watch here</a></p>` : ''}
-                    ${project.research ? `<p style="margin-top: 20px; font-style: italic;">${project.research}</p>` : ''}
+                    <img src="${media.images[0]}" alt="Project image" class="main-image" id="mainImage" style="display: none;">
                 </div>
-            `;
-            updateActiveDoc();
-        }
+                <div class="thumbnail-container">
+                    <div class="thumbnail active" onclick="switchToVideo()">
+                        <img src="${media.video.poster}" alt="Video thumbnail">
+                    </div>
+                    ${media.images.map((img, index) => `
+                        <div class="thumbnail" onclick="switchToImage(${index})">
+                            <img src="${img}" alt="Thumbnail ${index + 1}">
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }
+    return '';
+}
 
-        function navigateProject(direction) {
-            currentProjectIndex = (currentProjectIndex + direction + projects.length) % projects.length;
-            showProject(currentProjectIndex);
-        }
+function switchToVideo() {
+    const videoContainer = document.getElementById('videoContainer');
+    const mainImage = document.getElementById('mainImage');
+    if (videoContainer && mainImage) {
+        videoContainer.style.display = 'block';
+        mainImage.style.display = 'none';
+    }
+    
+    document.querySelectorAll('.thumbnail').forEach((thumb, index) => {
+        thumb.classList.toggle('active', index === 0);
+    });
+}
 
-        function createDocNav() {
-            const nav = document.getElementById('docNav');
-            projects.forEach((project, index) => {
-                const docItem = document.createElement('div');
-                docItem.className = 'doc-item';
-                docItem.innerHTML = `<img src="${project.icon}" alt="${project.title}">`;
-                docItem.onclick = () => {
-                    const items = document.querySelectorAll('.doc-item');
-                    items.forEach((item, i) => {
-                        item.classList.remove('shifting-left', 'shifting-right');
-                        if (i < index) {
-                            item.classList.add('shifting-left');
-                        } else if (i > index) {
-                            item.classList.add('shifting-right');
-                        }
-                        setTimeout(() => {
-                            item.classList.remove('shifting-left', 'shifting-right');
-                        }, 300);
-                    });
-                    showProject(index);
-                };
-                nav.appendChild(docItem);
-            });
-        }
+function switchToImage(index) {
+    const project = projects[currentProjectIndex];
+    if (project.media && project.media.type !== 'mixed') return;
+    
+    const videoContainer = document.getElementById('videoContainer');
+    const mainImage = document.getElementById('mainImage');
+    if (videoContainer && mainImage) {
+        videoContainer.style.display = 'none';
+        mainImage.style.display = 'block';
+        mainImage.src = project.media.images[index];
+    }
+    
+    document.querySelectorAll('.thumbnail').forEach((thumb, i) => {
+        thumb.classList.toggle('active', i === index + 1);
+    });
+    
+    const video = document.getElementById('projectVideo');
+    if (video) {
+        video.pause();
+    }
+}
 
-        function updateActiveDoc() {
-            document.querySelectorAll('.doc-item').forEach((item, index) => {
-                item.classList.remove('active');
-                if (index === currentProjectIndex) {
-                    item.classList.add('active');
+function showProject(index) {
+    currentProjectIndex = index;
+    currentImageIndex = 0;
+    const project = projects[index];
+    const details = document.getElementById('projectDetails');
+    
+    if (project.customContent) {
+        details.innerHTML = project.render();
+        updateActiveDoc();
+        return;
+    }
+    
+    details.innerHTML = `
+        <div class="project-image">
+            ${createMediaElement(project.media)}
+        </div>
+        <div class="project-info">
+            <h2>${project.title}</h2>
+            <div>
+                ${project.tags.map(tag => `<span class="project-tag ${tag.class}">${tag.text}</span>`).join('')}
+            </div>
+            <p>${project.description}</p>
+            <ul>
+                ${project.bullets.map(bullet => `<li>${bullet}</li>`).join('')}
+            </ul>
+            ${project.download ? `<p>Download: ${project.download}</p>` : ''}
+            ${project.trailer ? `<p>Trailer: <a href="${project.trailer}" target="_blank">Watch here</a></p>` : ''}
+        </div>
+    `;
+    updateActiveDoc();
+}
+
+function navigateProject(direction) {
+    currentProjectIndex = (currentProjectIndex + direction + projects.length) % projects.length;
+    showProject(currentProjectIndex);
+}
+
+function createDocNav() {
+    const nav = document.getElementById('docNav');
+    projects.forEach((project, index) => {
+        const docItem = document.createElement('div');
+        docItem.className = 'doc-item';
+        docItem.innerHTML = `<img src="${project.icon}" alt="${project.title}">`;
+        docItem.onclick = () => {
+            const items = document.querySelectorAll('.doc-item');
+            items.forEach((item, i) => {
+                item.classList.remove('shifting-left', 'shifting-right');
+                if (i < index) {
+                    item.classList.add('shifting-left');
+                } else if (i > index) {
+                    item.classList.add('shifting-right');
                 }
+                setTimeout(() => {
+                    item.classList.remove('shifting-left', 'shifting-right');
+                }, 300);
             });
-        }
-
-        window.onload = function() {
-            createDocNav();
-            showProject(0);
-            document.querySelectorAll('.doc-item').forEach((item, index) => {
-                item.classList.toggle('active', index === 0);
-            });
+            showProject(index);
         };
-    </script>
-</body>
-</html>
+        nav.appendChild(docItem);
+    });
+}
+
+function updateActiveDoc() {
+    document.querySelectorAll('.doc-item').forEach((item, index) => {
+        item.classList.remove('active');
+        if (index === currentProjectIndex) {
+            item.classList.add('active');
+        }
+    });
+}
+
+window.onload = function() {
+    createDocNav();
+    showProject(0);
+    document.querySelectorAll('.doc-item').forEach((item, index) => {
+        item.classList.toggle('active', index === 0);
+    });
+};</script>
