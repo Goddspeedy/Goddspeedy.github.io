@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akul Arora - Game Designer & Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f7;
+            color: #1d1d1f;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-size: 0.85rem;
+        }
+
+        .card.large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .card.wide {
+            grid-column: span 2;
+        }
+
+        .gallery-strip {
+            grid-column: span 4;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img,
+        .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        p, li {
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #FF6B6B, #6C5CE7);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Main Overview Card -->
+        <div class="card large gradient-bg">
+            <h1>We Are Blob</h1>
+            <p>"We Are Blob" is a cozy point-and-click game about Blob, a newly hired game developer racing to complete their first game in one week. It blends resource management with storytelling. Available on Steam.</p>
+            <ul>
+                <li>Development Time: 6 months</li>
+                <li>Team Size: 25 people</li>
+                <li>Studio: Black Banshee Studios</li>
+            </ul>
+        </div>
+
+        <!-- Narrative Design -->
+        <div class="card">
+            <h2>Narrative Design</h2>
+            <ul>
+                <li>Wrote a branching storyline with multiple player-driven outcomes.</li>
+                <li>Created tutorial dialogues, in-game emails, and text messages.</li>
+                <li>Designed fun product names for "Whamazon" and creative titles for "iTube."</li>
+                <li>Authored prompts and help screens to guide players effectively.</li>
+            </ul>
+        </div>
+
+        <!-- Game Design -->
+        <div class="card">
+            <h2>Game Design</h2>
+            <ul>
+                <li>Drafted key documents, including GDD and TDD.</li>
+                <li>Balanced hunger, health, and stress systems for engaging gameplay.</li>
+                <li>Designed Blob's room layout for optimal playability.</li>
+            </ul>
+        </div>
+
+        <!-- Programming & Leadership -->
+        <div class="card wide gradient-bg">
+            <h2>Programming & Leadership</h2>
+            <ul>
+                <li>Led a team of 4 developers, maintaining high coding standards.</li>
+                <li>Developed laptop, phone systems, UI, and save/load functionality.</li>
+                <li>Implemented cutscene triggers and branching storyline systems.</li>
+            </ul>
+        </div>
+
+        <!-- Quality Assurance -->
+        <div class="card">
+            <h2>Quality Assurance</h2>
+            <ul>
+                <li>Performed extensive QA testing and logged issues via JIRA.</li>
+                <li>Authored detailed QA documentation for efficient debugging.</li>
+            </ul>
+        </div>
+
+        <!-- Media Gallery -->
+        <div class="gallery-strip">
+            <div class="gallery-item">
+                <video controls poster="blobCover.png">
+                    <source src="blobVid.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="gallery-item">
+                <img src="blob1.png" alt="Screenshot 1">
+            </div>
+            <div class="gallery-item">
+                <img src="blob2.png" alt="Screenshot 2">
+            </div>
+            <div class="gallery-item">
+                <img src="blob3.png" alt="Screenshot 3">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

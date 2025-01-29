@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akul Arora - Game Designer & Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f7;
+            color: #1d1d1f;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Project Content */
+        .content-area {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        /* Grid Layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            padding: 20px;
+            height: calc(100vh - 90px);
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        /* Navigation */
+        .doc-nav {
+            display: flex;
+            justify-content: center;
+            padding: 15px;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .doc-item {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .doc-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .doc-item.active {
+            transform: scale(1.1);
+            border: 2px solid #0984E3;
+        }
+
+        .doc-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            height: 200px;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .card.large {
+            grid-column: span 2;
+            grid-row: span 2;
+            height: auto;
+        }
+
+        .card.wide {
+            grid-column: span 2;
+        }
+
+        .card-content {
+            padding: 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Media Gallery */
+        .gallery-strip {
+            display: flex;
+            gap: 15px;
+            height: 220px;
+            grid-column: span 4;
+        }
+
+        .gallery-item {
+            flex: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img,
+        .gallery-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Project Styles */
+        .project-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .project-desc {
+            font-size: 1.1rem;
+            line-height: 1.4;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #FF6B6B, #6C5CE7);
+        }
+
+        .tech-bg {
+            background: linear-gradient(135deg, #4834d4, #686de0);
+            color: white;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: inherit;
+        }
+
+        .feature-list li::before {
+            content: "•";
+            color: currentColor;
+        }
+
+        /* Home Page */
+        .intro-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .intro-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .intro-header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #0984E3, #6C5CE7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .intro-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .skill-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1400px) {
+            .grid-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .gallery-strip {
+                grid-column: span 3;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .gallery-strip {
+                grid-column: span 2;
+                flex-direction: column;
+                height: auto;
+            }
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content-area" id="projectDetails"></div>
+        <div class="doc-nav" id="docNav"></div>
+    </div>
+
+    <script>
+        const projects = [
+            {
+                id: 'intro',
+                title: 'Home',
+                icon: 'home.png',
+                render: () => `
+                    <div class="intro-content">
+                        <div class="intro-header">
+                            <h1>Akul Arora</h1>
+                            <h2>Game Designer & Programmer</h2>
+                        </div>
+                        
+                        <div class="intro-grid">
+                            <div class="intro-card">
+                                <h3>About Me</h3>
+                                <p>Born in Delhi, India, and based in Gurgaon, I've been fascinated by games, space, and technology since childhood. With a unique perspective symbolized by my alien tattoo, I bring a different approach to game development.</p>
+                                
+                                <h3>Education</h3>
+                                <ul>
+                                    <li>Masters in Game Design from Full Sail University (Valedictorian)</li>
+                                    <li>Bachelor of Technology in Information Technology from SRM University</li>
+                                </ul>
+                            </div>
+
+                            <div class="intro-card">
+                                <h3>Professional Journey</h3>
+                                <p>With 4 years of experience in game development, I've worked on various projects:</p>
+                                <ul>
+                                    <li>Game Programmer at Studiokrew (2021-2023)</li>
+                                    <li>Freelance Game Developer at NudgeNow</li>
+                                    <li>Intern at Cellec Games & Black Banshee Studios</li>
+                                </ul>
+                                
+                                <div class="skills-grid">
+                                    <div class="skill-card">Game Design</div>
+                                    <div class="skill-card">Level Design</div>
+                                    <div class="skill-card">Unity Development</div>
+                                    <div class="skill-card">Team Leadership</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 'blob',
+                title: 'We Are Blob',
+                icon: 'blob.png',
+                render: () => `
+                    <div class="grid-container">
+                        <div class="card large gradient-bg">
+                            <div class="card-content">
+                                <div>
+                                    <h1 class="project-title">We Are Blob</h1>
+                                    <p class="project-desc">A cozy point-and-click adventure about a game developer's journey to create their first game in one week.</p>
+                                </div>
+                                <div style="color: white; font-size: 1.2rem">Available Now on Steam</div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-content">
+                                <h2>Technical Lead</h2>
+                                <ul class="feature-list">
+                                    <li>4-person team leadership</li>
+                                    <li>Code standards establishment</li>
+                                    <li>Cross-team coordination</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-content">
+                                <h2>Performance</h2>
+                                <ul class="feature-list">
+                                    <li>40% faster loading</li>
+                                    <li>60 FPS performance</li>
+                                    <li>Zero critical bugs</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="gallery-strip">
+                            <div class="gallery-item">
+                                <video controls poster="blobCover.png">
+                                    <source src="blobVid.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <div class="gallery-item">
+                                <img src="blob1.png" alt="Screenshot 1">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="blob2.png" alt="Screenshot 2">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="blob3.png" alt="Screenshot 3">
+                            </div>
+                        </div>
+
+                        <div class="card wide tech-bg">
+                            <div class="card-content">
+                                <h2>Core Systems</h2>
+                                <ul class="feature-list">
+                                    <li>Dynamic currency management</li>
+                                    <li>Save/load functionality</li>
+                                    <li>Resource balancing</li>
+                                    <li>State management</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="card wide">
+                            <div class="card-content">
+                                <h2>Gameplay Features</h2>
+                                <ul class="feature-list">
+                                    <li>Interactive tutorial system</li>
+                                    <li>Narrative cutscenes</li>
+                                    <li>Resource management</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 'galleryofgreed',
+                title: 'Gallery of Greed',
+                icon: 'gog.png',
+                render: () => `
+                    <div class="grid-container">
+                        <div class="card large gradient-bg">
+                            <div class="card-content">
+                                <div>
+                                    <h1 class="project-title">Gallery of Greed</h1>
+                                    <p class="project-desc">A first-person puzzle heist game set in a Renaissance art gallery. Steal the crown, solve art-inspired puzzles, and escape security.</p>
+                                </div>
+                                <div style="color: white; font-size: 1.2rem">Coming Soon</div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-content">
+                                <h2>Production Lead</h2>
+                                <ul class="feature-list">
+                                    <li>6-person team management</li>
+                                    <li>Project documentation</li>
+                                    <li>Milestone tracking</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-content">
+                                <h2>Development</h2>
+                                <ul class="feature-list">
+                                    <li>4-month timeline</li>
+                                    <li>90% completion rate</li>
+                                    <li>Optimized performance</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="gallery-strip">
+                            <div class="gallery-item">
+                                <video controls poster="gog1.png">
+                                    <source src="video.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <div class="gallery-item">
+                                <img src="gog2.png" alt="Screenshot 1">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="gog3.png" alt="Screenshot 2">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="gog4.png" alt="Screenshot 3">
+                            </div>
+                        </div>
+
+                        <div class="card wide tech-bg">
+                            <div class="card-content">
+                                <h2>Puzzle Systems</h2>
+                                <ul class="feature-list">
+                                    <li>Statue manipulation mechanics</li>
+                                    <li>Chess-based security system</li>
+                                    <li>Cultural artifact interactions</li>
+</ul>
+                            </div>
+                        </div>
+
+                        <div class="card wide">
+                            <div class="card-content">
+                                <h2>Technical Features</h2>
+                                <ul class="feature-list">
+                                    <li>Keypad security system</li>
+                                    <li>Game-wide timer system</li>
+                                    <li>Alert mechanics</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        let currentProjectIndex = 0;
+
+        // Enhanced navigation with smooth transitions
+        function navigateProject(direction) {
+            const details = document.getElementById('projectDetails');
+            details.style.opacity = '0';
+            
+            setTimeout(() => {
+                currentProjectIndex = (currentProjectIndex + direction + projects.length) % projects.length;
+                showProject(currentProjectIndex);
+                details.style.opacity = '1';
+            }, 300);
+        }
+
+        function createDocNav() {
+            const nav = document.getElementById('docNav');
+            projects.forEach((project, index) => {
+                const docItem = document.createElement('div');
+                docItem.className = 'doc-item';
+                docItem.innerHTML = `<img src="${project.icon}" alt="${project.title}">`;
+                docItem.title = project.title;
+                
+                docItem.onclick = () => {
+                    const details = document.getElementById('projectDetails');
+                    details.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        showProject(index);
+                        details.style.opacity = '1';
+                    }, 300);
+                };
+                
+                nav.appendChild(docItem);
+            });
+        }
+
+        function showProject(index) {
+            currentProjectIndex = index;
+            const project = projects[index];
+            const details = document.getElementById('projectDetails');
+            details.innerHTML = project.render();
+            updateActiveDoc();
+        }
+
+        function updateActiveDoc() {
+            document.querySelectorAll('.doc-item').forEach((item, index) => {
+                item.classList.toggle('active', index === currentProjectIndex);
+            });
+        }
+
+        // Initialize
+        window.onload = function() {
+            // Add transition style to project details
+            const details = document.getElementById('projectDetails');
+            details.style.transition = 'opacity 0.3s ease';
+
+            createDocNav();
+            showProject(0);
+
+            // Add keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') navigateProject(-1);
+                if (e.key === 'ArrowRight') navigateProject(1);
+            });
+
+            // Add touch swipe navigation
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            document.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            document.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const swipeDistance = touchEndX - touchStartX;
+                
+                if (Math.abs(swipeDistance) > swipeThreshold) {
+                    if (swipeDistance > 0) {
+                        navigateProject(-1); // Swipe right, go to previous
+                    } else {
+                        navigateProject(1); // Swipe left, go to next
+                    }
+                }
+            }
+        };
+
+        // Media controls
+        function playVideo(videoId) {
+            const video = document.getElementById(videoId);
+            if (video) {
+                video.play();
+            }
+        }
+
+        function pauseVideo(videoId) {
+            const video = document.getElementById(videoId);
+            if (video) {
+                video.pause();
+            }
+        }
+
+        // Handle video thumbnail clicks
+        function handleThumbnailClick(videoId) {
+            const allVideos = document.querySelectorAll('video');
+            allVideos.forEach(video => {
+                if (video.id !== videoId) {
+                    video.pause();
+                }
+            });
+        }
+    </script>
+</body>
+</html>

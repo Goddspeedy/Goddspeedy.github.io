@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akul Arora - Game Designer & Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --pink-500: #EC4899;
+            --purple-500: #8B5CF6;
+            --zinc-800: #27272A;
+            --zinc-900: #18181B;
+        }
+  @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+            100% { transform: translateY(0) scale(1); }
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.4; }
+            50% { opacity: 0.6; }
+            100% { opacity: 0.4; }
+        }
+
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: black;
+            color: white;
+            height: 100vh;
+            overflow: hidden;
+            line-height: 1.6;
+        }
+
+        /* Your existing background styles remain the same */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            background:
+                radial-gradient(circle at 20% 20%, rgba(236, 72, 153, 0.15) 0%, transparent 70%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+            animation: gradientMove 20s ease infinite;
+            background-size: 200% 200%;
+        }
+
+    .grid-overlay {
+        position: fixed;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(255, 255, 255, .03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, .03) 1px, transparent 1px);
+        background-size: 50px 50px;
+        z-index: -1;
+        mask-image: radial-gradient(black, transparent);
+    }
+
+    /* Decorative Elements */
+    .decorative-blob {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(100px);
+        opacity: 0.5;
+        animation: float 10s ease infinite;
+    }
+
+    .blob-1 {
+        top: 10%;
+        right: 15%;
+        width: 300px;
+        height: 300px;
+        background: var(--pink-500);
+        animation-delay: 0s;
+    }
+
+    .blob-2 {
+        bottom: 10%;
+        left: 15%;
+        width: 400px;
+        height: 400px;
+        background: var(--purple-500);
+        animation-delay: -5s;
+    }
+
+    .container {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    }
+
+    .content-area {
+        flex: 1;
+        overflow: auto;
+        padding: 40px;
+        padding-bottom: 90px;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        max-width: 1800px;
+        margin: 0 auto;
+    }
+
+    .intro-content {
+        max-width: 1800px;
+        margin: 0 auto;
+    }
+
+    .intro-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .intro-header h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, var(--pink-500));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .intro-header h2 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.25rem;
+            color: var(--pink-500);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+    .intro-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .intro-card {
+        background: rgba(24, 24, 27, 0.5);
+        backdrop-filter: blur(16px);
+        border-radius: 15px;
+        padding: 25px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .intro-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(236, 72, 153, 0.2);
+    }
+
+    .intro-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            140deg,
+            rgba(236, 72, 153, 0.1),
+            rgba(139, 92, 246, 0.1)
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .intro-card:hover::before {
+        opacity: 1;
+    }
+
+    .intro-card h3 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+    .intro-card p {
+        color: #A1A1AA;
+        line-height: 1.6;
+        margin-bottom: 20px;
+        position: relative;
+        font-size: 1rem;
+    }
+
+    .intro-card ul {
+        list-style: none;
+        position: relative;
+        padding-left: 0.5rem;
+    }
+
+    .intro-card ul li {
+        display: flex;
+        gap: 1rem;
+        color: #A1A1AA;
+        margin-bottom: 10px;
+        line-height: 1.6;
+        font-size: 1rem;
+    }
+
+    .intro-card ul li::before {
+        content: '•';
+        color: var(--pink-500);
+        font-size: 1.5em;
+        line-height: 1;
+    }
+
+    .card {
+        background: rgba(24, 24, 27, 0.5);
+        backdrop-filter: blur(16px);
+        border-radius: 15px;
+        height: 250px;
+        overflow-y: auto;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            140deg,
+            rgba(236, 72, 153, 0.1),
+            rgba(139, 92, 246, 0.1)
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .card:hover::before {
+        opacity: 1;
+    }
+
+    .card.large {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+
+    .card.wide {
+        grid-column: span 2;
+    }
+
+    .card-content {
+        padding: 6px;
+        position: relative;
+    }
+
+    .card h2 {
+        margin-bottom: 1px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: white;
+        font-size: 1.25rem;
+    }
+
+    .title-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+   .project-title {
+            font-size: 2rem;
+            font-weight: 800;
+            font-family: 'Roboto', sans-serif;
+            margin-bottom: 15px;
+            color: white;
+            position: relative;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            padding-bottom: 5px;
+            border-bottom: 4px solid var(--pink-500);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-title::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--pink-500), var(--purple-500));
+            animation: gradientMove 3s linear infinite;
+            background-size: 200% 200%;
+        }
+
+    .project-desc {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: rgba(255,255,255,0.9);
+    }
+
+    .info-box-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .info-box {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        text-decoration: none;
+        color: white;
+        display: block;
+    }
+
+    .info-box:hover {
+        background: rgba(0, 0, 0, 0.4);
+        border-color: rgba(236, 72, 153, 0.2);
+        transform: translateY(-2px);
+    }
+
+    .info-box-title {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 5px;
+    }
+
+    .info-box-value {
+        font-size: .9rem;
+        color: white;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .download-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .feature-list {
+        list-style: none;
+        margin-top: 6px;
+        padding-left: 0.5rem;
+    }
+
+    .feature-list li {
+        margin-bottom: 8px;
+        padding-left: 16px;
+        position: relative;
+        line-height: 1.4;
+	font-size: .95rem;
+        color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .feature-list li::before {
+        content:  '•';
+        position: absolute;
+        left: 0;
+        color: var(--pink-500);
+    }
+
+    .gallery-strip {
+        display: flex;
+        gap: 15px;
+        grid-column: span 4;
+        height: 220px;
+    }
+
+    .gallery-item {
+    flex: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1; /* Ensure it's above the background */
+}
+
+    .gallery-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .gallery-item::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(140deg,
+            rgba(236, 72, 153, 0.1),
+            rgba(139, 92, 246, 0.1)
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover::before {
+        opacity: 1;
+    }
+
+    .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 2; /* Ensure the image is clickable */
+}
+    .gallery-item video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .video-controls {
+        position: absolute;
+        bottom: -50px;
+        left: 0;
+        right: 0;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: bottom 0.3s ease;
+    }
+
+    .gallery-item:hover .video-controls {
+        bottom: 0;
+    }
+
+    .video-button {
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        padding: 5px;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .video-button:hover {
+        opacity: 0.8;
+    }
+
+    .volume-slider {
+        width: 80px;
+        height: 4px;
+        -webkit-appearance: none;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 2px;
+        outline: none;
+    }
+
+    .volume-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 12px;
+        height: 12px;
+        background: white;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal.active {
+        display: flex;
+    }
+
+    .modal-content {
+        max-width: 90%;
+        max-height: 90vh;
+        display: block;
+        margin: auto;
+        border-radius: 8px;
+    }
+
+    .close-modal {
+        position: fixed;
+        top: 20px;
+        right: 30px;
+        color: white;
+        font-size: 40px;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .doc-nav {
+        display: flex;
+        justify-content: center;
+        padding: 12px 15px;
+        gap: 30px;
+        background: rgba(24, 24, 27, 0.5);
+        backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+    }
+
+   .doc-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 80px;
+    text-align: center;
+    position: relative;
+}
+
+.doc-item::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--pink-500);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.doc-item:hover::after,
+.doc-item.active::after {
+    width: 100%;
+}
+
+    .doc-item:hover {
+        transform: translateY(-3px);
+    }
+
+    .doc-item.active {
+        transform: scale(1.05);
+    }
+
+    .doc-item-image {
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        background: rgba(24, 24, 27, 0.6);
+    }
+
+    .doc-item.active .doc-item-image {
+        border: 2px solid var(--pink-500);
+    }
+
+    .doc-item:hover .doc-item-image {
+        border-color: rgba(236, 72, 153, 0.2);
+    }
+
+    .doc-item-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background-color: transparent;
+    }
+
+    .doc-item-label {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 700;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    max-width: 120%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.doc-item:hover .doc-item-label,
+.doc-item.active .doc-item-label {
+    color: var(--pink-500);
+}
+
+    .doc-item.active .doc-item-label {
+        color: var(--pink-500);
+    }
+/* Specific styling for the home icon */
+.doc-item:first-child img {
+    padding: 12px;
+    background: rgba(255, 255, 255, 0);
+}
+
+    @media (max-width: 1400px) {
+        .grid-container {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .gallery-strip {
+            grid-column: span 3;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .grid-container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .gallery-strip {
+            grid-column: span 2;
+            flex-direction: column;
+            height: auto;
+        }
+        .gallery-item {
+            height: 220px;
+        }
+        .info-box-container {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes zoomIn {
+        from {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .blob-page .animate-card {
+        opacity: 0;
+        animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .blob-page .animate-card:nth-child(1) { animation-delay: 0.1s; }
+    .blob-page .animate-card:nth-child(2) { animation-delay: 0.2s; }
+    .blob-page .animate-card:nth-child(3) { animation-delay: 0.3s; }
+    .blob-page .animate-card:nth-child(4) { animation-delay: 0.4s; }
+    .blob-page .animate-card:nth-child(5) { animation-delay: 0.5s; }
+
+    .blob-page .gallery-item {
+        opacity: 0;
+        animation: zoomIn 0.6s ease-out forwards;
+    }
+
+    .blob-page .gallery-item:nth-child(1) { animation-delay: 0.6s; }
+    .blob-page .gallery-item:nth-child(2) { animation-delay: 0.7s; }
+    .blob-page .gallery-item:nth-child(3) { animation-delay: 0.8s; }
+    .blob-page .gallery-item:nth-child(4) { animation-delay: 0.9s; }
+</style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="grid-overlay"></div>
+    <div class="decorative-blob blob-1"></div>
+    <div class="decorative-blob blob-2"></div>
+	<div class="container">
+    <div class="content-area" id="projectDetails"></div>
+    <div class="doc-nav" id="docNav"></div>
+</div>
+
+<div id="imageModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="modalImage">
+</div>
+
+<div id="videoModal" class="modal">
+    <span class="close-modal">&times;</span>
+    <video id="modalVideo" controls class="modal-content">
+        <source src="" type="video/mp4">
+    </video>
+</div>
+
+<script>
+    // The JavaScript remains the same as in the original Code B
+    const projects = [
+        {
+            id: 'intro',
+            title: 'Home',
+            icon: 'data:image/svg+xml,' + encodeURIComponent(`
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                <path d="M21 20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.49a1 1 0 0 1 .386-.79l8-6.222a1 1 0 0 1 1.228 0l8 6.222a1 1 0 0 1 .386.79V20z"/>
+                <path d="M14.5 14h-5v7h5v-7z" fill="black"/>
+            </svg>
+        `),
+            render: () => `
+                <div class="intro-content">
+                    <div class="intro-header">
+                        <h1>Akul Arora</h1>
+                        <h2>Game Designer & Programmer</h2>
+                    </div>
+                    
+                    <div class="intro-grid">
+                        <div class="intro-card">
+                            <h3>About Me</h3>
+                            <p>Born in Delhi, India, and based in Gurgaon, I've been fascinated by games, space, and technology since childhood. With a unique perspective symbolized by my alien tattoo, I bring a different approach to game development.</p>
+                            
+                            <h3>Education</h3>
+                            <ul>
+                                <li>Masters in Game Design from Full Sail University (Valedictorian)</li>
+                                <li>Bachelor of Technology in Information Technology from SRM University</li>
+                            </ul>
+                        </div>
+
+                        <div class="intro-card">
+                            <h3>Professional Journey</h3>
+                            <p>With 4 years of experience in game development, I've worked on various projects:</p>
+                            <ul>
+                                <li>Game Programmer at Studiokrew (2021-2023)</li>
+                                <li>Freelance Game Developer at NudgeNow</li>
+                                <li>Intern at Cellec Games & Black Banshee Studios</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            `
+        },
+        {
+            id: 'blob',
+            title: 'We Are Blob',
+            icon: 'blob.png',
+            render: () => `
+                <div class="grid-container">
+                    <div class="card large animate-card">
+                        <div class="card-content">
+                            <h1 class="project-title">We Are Blob</h1>
+                            <p class="project-desc">
+                                "We Are Blob" is a cozy point-and-click game that follows the journey of Blob, a newly hired game developer racing against time to complete their first game within a week. This lighthearted, narrative-driven experience combines resource management with engaging storytelling.
+                            </p>
+                            <div class="info-box-container">
+                                <div class="info-box">
+                                    <div class="info-box-title">Development Time</div>
+                                    <div class="info-box-value">6 months</div>
+                                </div>
+                                <div class="info-box">
+                                    <div class="info-box-title">Team Size</div>
+                                    <div class="info-box-value">25 people</div>
+                                </div>
+                                <div class="info-box">
+                                    <div class="info-box-title">Studio</div>
+                                    <div class="info-box-value">Black Banshee Studios</div>
+                                </div>
+                                <a href="https://store.steampowered.com/app/3161290/We_are_Blob/" 
+                                   target="_blank" 
+                                   class="info-box">
+                                    <div class="info-box-title">Platform</div>
+                                    <div class="info-box-value">
+                                        Available on Steam
+                                        <svg class="download-icon" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                                        </svg>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card animate-card">
+                        <div class="card-content">
+                            <h2>
+                                <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                    <path d="M9 12l2 2 4-4"/>
+                                </svg>
+                                Quality Assurance
+                            </h2>
+                            <ul class="feature-list">
+                                <li>Performed regular QA testing to ensure gameplay quality.</li>
+                                <li>Created QA documentation and logged detailed bug reports and tickets on JIRA.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card animate-card">
+                        <div class="card-content">
+                            <h2>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-controller" viewBox="0 0 16 16">
+<path d="M11.5 6.027a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m2.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m-6.5-3h1v1h1v1h-1v1h-1v-1h-1v-1h1z"/>
+  <path d="M3.051 3.26a.5.5 0 0 1 .354-.613l1.932-.518a.5.5 0 0 1 .62.39c.655-.079 1.35-.117 2.043-.117.72 0 1.443.041 2.12.126a.5.5 0 0 1 .622-.399l1.932.518a.5.5 0 0 1 .306.729q.211.136.373.297c.408.408.78 1.05 1.095 1.772.32.733.599 1.591.805 2.466s.34 1.78.364 2.606c.024.816-.059 1.602-.328 2.21a1.42 1.42 0 0 1-1.445.83c-.636-.067-1.115-.394-1.513-.773-.245-.232-.496-.526-.739-.808-.126-.148-.25-.292-.368-.423-.728-.804-1.597-1.527-3.224-1.527s-2.496.723-3.224 1.527c-.119.131-.242.275-.368.423-.243.282-.494.575-.739.808-.398.38-.877.706-1.513.773a1.42 1.42 0 0 1-1.445-.83c-.27-.608-.352-1.395-.329-2.21.024-.826.16-1.73.365-2.606.206-.875.486-1.733.805-2.466.315-.722.687-1.364 1.094-1.772a2.3 2.3 0 0 1 .433-.335l-.028-.079zm2.036.412c-.877.185-1.469.443-1.733.708-.276.276-.587.783-.885 1.465a14 14 0 0 0-.748 2.295 12.4 12.4 0 0 0-.339 2.406c-.022.755.062 1.368.243 1.776a.42.42 0 0 0 .426.24c.327-.034.61-.199.929-.502.212-.202.4-.423.615-.674.133-.156.276-.323.44-.504C4.861 9.969 5.978 9.027 8 9.027s3.139.942 3.965 1.855c.164.181.307.348.44.504.214.251.403.472.615.674.318.303.601.468.929.503a.42.42 0 0 0 .426-.241c.18-.408.265-1.02.243-1.776a12.4 12.4 0 0 0-.339-2.406 14 14 0 0 0-.748-2.295c-.298-.682-.61-1.19-.885-1.465-.264-.265-.856-.523-1.733-.708-.85-.179-1.877-.27-2.913-.27s-2.063.091-2.913.27"/>
+</svg>
+                                    Game Design
+                                </h2>
+                                <ul class="feature-list">
+                                    <li>Contributed to Game Design Document (GDD) and Technical Design Document (TDD).</li>
+                                    <li>Designed an adaptive survival system that balances player resources and challenges for meaningful strategic choices</li>
+                                    <li>Designed Blob's in-game room layout to enhance visual appeal and gameplay functionality.</li>
+                                </ul>
+                            </div>
+                        </div>
+			<div class="card wide animate-card">
+                        <div class="card-content">
+                            <h2>
+                                <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 18l6-6-6-6"></path>
+                                    <path d="M8 6l-6 6 6 6"></path>
+                                </svg>
+                                Programming & Technical Leadership
+                            </h2>
+                            <ul class="feature-list">
+                                <li>Led a team of 4 developers, ensuring coding standards and effective collaboration across disciplines.</li>
+                                <li>Developed laptop and phone systems which enabled players to interact with in-game apps (iTube, Whamazon), receive messages and emails, and manage their in-game time.</li>
+                                <li>Created functional and user-friendly interfaces for seamless player interaction.</li>
+                                <li>Designed and developed the interactive tutorial sequence.</li>
+                                <li>Implemented the currency system, cutscene triggers, and save/load functionality.</li>
+                                <li>Maintained the game's GitHub repository and contributed to version control.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card wide animate-card">
+                        <div class="card-content">
+                            <h2>
+                                <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                                </svg>
+                                Narrative Design
+                            </h2>
+                            <ul class="feature-list">
+                                <li>Wrote a branching storyline with multiple outcomes based on player actions.</li>
+				<li>Crafted dialogues for the tutorial sequence to guide players seamlessly into the game mechanics.</li>
+                                    <li>Created emails and text messages for Blob from in-game characters.</li>
+                                    <li>Developed creative product names for the Amazon-inspired app Whamazon and titles for videos on the YouTube-inspired app iTube.</li>
+                                    <li>Authored content for the help screen to provide players with intuitive guidance.</li>
+                                    <li>Designed player prompts that appear during gameplay, ensuring they were contextually relevant and helpful.</li>
+                                </ul>
+                            </div>
+                        </div>
+			<div class="gallery-strip">
+                        <div class="gallery-item">
+                            <video id="blobVideo" autoplay muted loop playsinline poster="blobCover.png">
+                                <source src="blobVid.mp4" type="video/mp4">
+                            </video>
+                            <div class="video-controls">
+                                <button class="video-button play-pause-btn">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                    </svg>
+                                </button>
+                                <button class="video-button mute-btn">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                                    </svg>
+                                </button>
+                                <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1">
+                                <button class="video-button fullscreen-button">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="blob1.png" alt="Gameplay Screenshot 1" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="blob2.png" alt="Gameplay Screenshot 2" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="blob3.png" alt="Gameplay Screenshot 3" class="gallery-image">
+                        </div>
+                    </div>
+                </div>
+            `
+        },
+	{
+id: 'galleryofgreed',
+title: 'Gallery of Greed',
+icon: 'gog.png',
+render: () => `
+<div class="grid-container">
+                    <div class="card large animate-card">
+                        <div class="card-content">
+                            <h1 class="project-title">Gallery of Greed</h1>
+                            <p class="project-desc">
+                                "We Are Blob" is a cozy point-and-click game that follows the journey of Blob, a newly hired game developer racing against time to complete their first game within a week. This lighthearted, narrative-driven experience combines resource management with engaging storytelling.
+                            </p>
+                            <div class="info-box-container">
+                                <div class="info-box">
+                                    <div class="info-box-title">Development Time</div>
+                                    <div class="info-box-value">1 month</div>
+                                </div>
+                                <div class="info-box">
+                                    <div class="info-box-title">Team Size</div>
+                                    <div class="info-box-value">11 people</div>
+                                </div>
+                                <div class="info-box">
+                                    <div class="info-box-title">Studio</div>
+                                    <div class="info-box-value">Grad School Project</div>
+                                </div>
+                                <a href="https://store.steampowered.com/app/3161290/We_are_Blob/" 
+                                   target="_blank" 
+                                   class="info-box">
+                                    <div class="info-box-title">Platform</div>
+                                    <div class="info-box-value">
+                                        Available on Steam
+                                        <svg class="download-icon" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                                        </svg>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card animate-card">
+                        <div class="card-content">
+                            <h2>
+                                <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                    <path d="M9 12l2 2 4-4"/>
+                                </svg>
+                                Quality Assurance
+                            </h2>
+                            <ul class="feature-list">
+                                <li>Performed regular QA testing to ensure gameplay quality.</li>
+                                <li>Created QA documentation and logged detailed bug reports and tickets on JIRA.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card animate-card">
+                        <div class="card-content">
+                            <h2>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-controller" viewBox="0 0 16 16">
+<path d="M11.5 6.027a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m2.5-.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m-1.5 1.5a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1m-6.5-3h1v1h1v1h-1v1h-1v-1h-1v-1h1z"/>
+  <path d="M3.051 3.26a.5.5 0 0 1 .354-.613l1.932-.518a.5.5 0 0 1 .62.39c.655-.079 1.35-.117 2.043-.117.72 0 1.443.041 2.12.126a.5.5 0 0 1 .622-.399l1.932.518a.5.5 0 0 1 .306.729q.211.136.373.297c.408.408.78 1.05 1.095 1.772.32.733.599 1.591.805 2.466s.34 1.78.364 2.606c.024.816-.059 1.602-.328 2.21a1.42 1.42 0 0 1-1.445.83c-.636-.067-1.115-.394-1.513-.773-.245-.232-.496-.526-.739-.808-.126-.148-.25-.292-.368-.423-.728-.804-1.597-1.527-3.224-1.527s-2.496.723-3.224 1.527c-.119.131-.242.275-.368.423-.243.282-.494.575-.739.808-.398.38-.877.706-1.513.773a1.42 1.42 0 0 1-1.445-.83c-.27-.608-.352-1.395-.329-2.21.024-.826.16-1.73.365-2.606.206-.875.486-1.733.805-2.466.315-.722.687-1.364 1.094-1.772a2.3 2.3 0 0 1 .433-.335l-.028-.079zm2.036.412c-.877.185-1.469.443-1.733.708-.276.276-.587.783-.885 1.465a14 14 0 0 0-.748 2.295 12.4 12.4 0 0 0-.339 2.406c-.022.755.062 1.368.243 1.776a.42.42 0 0 0 .426.24c.327-.034.61-.199.929-.502.212-.202.4-.423.615-.674.133-.156.276-.323.44-.504C4.861 9.969 5.978 9.027 8 9.027s3.139.942 3.965 1.855c.164.181.307.348.44.504.214.251.403.472.615.674.318.303.601.468.929.503a.42.42 0 0 0 .426-.241c.18-.408.265-1.02.243-1.776a12.4 12.4 0 0 0-.339-2.406 14 14 0 0 0-.748-2.295c-.298-.682-.61-1.19-.885-1.465-.264-.265-.856-.523-1.733-.708-.85-.179-1.877-.27-2.913-.27s-2.063.091-2.913.27"/>
+</svg>
+                                    Game Design
+                                </h2>
+                                <ul class="feature-list">
+                                    <li>Contributed to Game Design Document (GDD) and Technical Design Document (TDD).</li>
+                                    <li>Designed an adaptive survival system that balances player resources and challenges for meaningful strategic choices</li>
+                                    <li>Designed Blob's in-game room layout to enhance visual appeal and gameplay functionality.</li>
+                                </ul>
+                            </div>
+                        </div>
+			<div class="card wide animate-card">
+                        <div class="card-content">
+                            <h2>
+                                <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M16 18l6-6-6-6"></path>
+                                    <path d="M8 6l-6 6 6 6"></path>
+                                </svg>
+                                Programming & Technical Leadership
+                            </h2>
+                            <ul class="feature-list">
+                                <li>Led a team of 4 developers, ensuring coding standards and effective collaboration across disciplines.</li>
+                                <li>Developed laptop and phone systems which enabled players to interact with in-game apps (iTube, Whamazon), receive messages and emails, and manage their in-game time.</li>
+                                <li>Created functional and user-friendly interfaces for seamless player interaction.</li>
+                                <li>Designed and developed the interactive tutorial sequence.</li>
+                                <li>Implemented the currency system, cutscene triggers, and save/load functionality.</li>
+                                <li>Maintained the game's GitHub repository and contributed to version control.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card wide animate-card">
+                        <div class="card-content">
+                            <h2>
+                                <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                                </svg>
+                                Narrative Design
+                            </h2>
+                            <ul class="feature-list">
+                                <li>Wrote a branching storyline with multiple outcomes based on player actions.</li>
+				<li>Crafted dialogues for the tutorial sequence to guide players seamlessly into the game mechanics.</li>
+                                    <li>Created emails and text messages for Blob from in-game characters.</li>
+                                    <li>Developed creative product names for the Amazon-inspired app Whamazon and titles for videos on the YouTube-inspired app iTube.</li>
+                                    <li>Authored content for the help screen to provide players with intuitive guidance.</li>
+                                    <li>Designed player prompts that appear during gameplay, ensuring they were contextually relevant and helpful.</li>
+                                </ul>
+                            </div>
+                        </div>
+			<div class="gallery-strip">
+                        <div class="gallery-item">
+                            <video id="blobVideo" autoplay muted loop playsinline poster="blobCover.png">
+                                <source src="blobVid.mp4" type="video/mp4">
+                            </video>
+                            <div class="video-controls">
+                                <button class="video-button play-pause-btn">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                    </svg>
+                                </button>
+                                <button class="video-button mute-btn">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                                    </svg>
+                                </button>
+                                <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1">
+                                <button class="video-button fullscreen-button">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="blob1.png" alt="Gameplay Screenshot 1" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="blob2.png" alt="Gameplay Screenshot 2" class="gallery-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="blob3.png" alt="Gameplay Screenshot 3" class="gallery-image">
+                        </div>
+                    </div>
+                </div>
+            `
+        }
+    ];
+
+    function initializeVideoControls() {
+        const video = document.getElementById('blobVideo');
+        const playPauseBtn = document.querySelector('.play-pause-btn');
+        const muteBtn = document.querySelector('.mute-btn');
+        const volumeSlider = document.querySelector('.volume-slider');
+        const fullscreenBtn = document.querySelector('.fullscreen-button');
+        const videoContainer = document.querySelector('.gallery-item');
+
+        let lastVolume = 1;
+
+        function updatePlayButton() {
+            playPauseBtn.innerHTML = video.paused ? 
+                `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>` :
+                `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="6" y="4" width="4" height="16"></rect>
+                    <rect x="14" y="4" width="4" height="16"></rect>
+                </svg>`;
+        }
+
+        function updateMuteButton() {
+            muteBtn.innerHTML = video.muted ? 
+                `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <line x1="23" y1="9" x2="17" y2="15"></line>
+                    <line x1="17" y1="9" x2="23" y2="15"></line>
+                </svg>` :
+                `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                </svg>`;
+            
+            volumeSlider.value = video.muted ? 0 : lastVolume;
+        }
+
+        updatePlayButton();
+        updateMuteButton();
+        volumeSlider.value = video.muted ? 0 : video.volume;
+        lastVolume = video.volume;
+
+        playPauseBtn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+            updatePlayButton();
+        });
+
+        muteBtn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (video.muted) {
+                video.muted = false;
+                video.volume = lastVolume;
+                volumeSlider.value = lastVolume;
+            } else {
+                lastVolume = video.volume;
+                video.muted = true;
+                volumeSlider.value = 0;
+            }
+            updateMuteButton();
+        });
+
+        volumeSlider?.addEventListener('input', (e) => {
+            e.stopPropagation();
+            const newVolume = parseFloat(e.target.value);
+            if (newVolume > 0) {
+                video.volume = newVolume;
+                lastVolume = newVolume;
+                video.muted = false;
+            } else {
+                video.muted = true;
+            }
+            updateMuteButton();
+        });
+
+        fullscreenBtn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (!document.fullscreenElement) {
+                videoContainer.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        });
+
+        video?.addEventListener('click', (e) => {
+            e.preventDefault();
+            const videoModal = document.getElementById('videoModal');
+            const modalVideo = document.getElementById('modalVideo');
+            videoModal.classList.add('active');
+            modalVideo.src = video.querySelector('source').src;
+            modalVideo.play();
+        });
+
+        video.addEventListener('play', updatePlayButton);
+        video.addEventListener('pause', updatePlayButton);
+        video.addEventListener('volumechange', updateMuteButton);
+    }
+
+    function initializeModals() {
+        const images = document.querySelectorAll('.gallery-image');
+        const imageModal = document.getElementById('imageModal');
+        const videoModal = document.getElementById('videoModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalVideo = document.getElementById('modalVideo');
+        const closeButtons = document.querySelectorAll('.close-modal');
+
+        images.forEach(img => {
+            img.onclick = function() {
+                imageModal.classList.add('active');
+                modalImg.src = this.src;
+            }
+        });
+
+        closeButtons.forEach(button => {
+            button.onclick = function() {
+                imageModal.classList.remove('active');
+                videoModal.classList.remove('active');
+                modalVideo.pause();
+            }
+        });
+
+        [imageModal, videoModal].forEach(modal => {
+            modal.onclick = function(e) {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    if (modal === videoModal) {
+                        modalVideo.pause();
+                    }
+                }
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                imageModal.classList.remove('active');
+                videoModal.classList.remove('active');
+                modalVideo.pause();
+            }
+        });
+    }
+
+    function showProject(index) {
+        const project = projects[index];
+        const contentArea = document.getElementById('projectDetails');
+        contentArea.innerHTML = project.render();
+        contentArea.className = `content-area ${project.id}-page`;
+        updateActiveDoc(index);
+        
+        if (project.id === 'blob' || project.id === 'galleryofgreed') {
+            initializeVideoControls();
+            initializeModals();
+            const video = document.getElementById('blobVideo');
+            if (video) {
+                video.play().catch(console.log);
+            }
+        }
+    }
+
+    function updateActiveDoc(index) {
+        document.querySelectorAll('.doc-item').forEach((item, i) => {
+            item.classList.toggle('active', i === index);
+        });
+    }
+
+    function createNavigation() {
+        const nav = document.getElementById('docNav');
+        projects.forEach((project, index) => {
+            const item = document.createElement('div');
+            item.className = 'doc-item';
+            item.innerHTML = `
+                <div class="doc-item-image">
+                    <img src="${project.icon}" alt="${project.title}">
+                </div>
+                <span class="doc-item-label">${project.title}</span>
+            `;
+            item.onclick = () => showProject(index);
+            nav.appendChild(item);
+        });
+    }
+
+    window.onload = function() {
+        createNavigation();
+        showProject(0);
+    };
+</script>
+</body>
+</html>

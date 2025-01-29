@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game & Level Designer Portfolio</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #ffffff;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .content {
+            flex-grow: 1;
+            display: flex;
+            padding: 70px;
+            overflow-y: auto;
+            transition: opacity 0.4s ease;
+        }
+
+        .project-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        @media (min-width: 1024px) {
+            .project-content {
+                flex-direction: row;
+            }
+        }
+
+        .project-image {
+            flex: 1;
+        }
+
+        .project-info {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .intro-content {
+            max-width: 850px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .intro-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            animation: slideIn 0.6s ease-out;
+        }
+
+        .intro-content h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #0ea5e9;
+            animation: slideIn 0.6s ease-out 0.2s backwards;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .tag {
+            display: inline-block;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .video-container {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .thumbnail-container {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding: 16px 0;
+        }
+
+        .thumbnail {
+            flex: 0 0 auto;
+            width: 120px;
+            height: 80px;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .thumbnail.active {
+            border-color: #0ea5e9;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .doc-nav {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            gap: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .doc-item {
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .doc-item:hover {
+            transform: translateY(-4px);
+        }
+
+        .doc-item.active {
+            border-color: #0ea5e9;
+            transform: scale(1.1);
+        }
+
+        .doc-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 14px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .social-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        li:before {
+            content: "•";
+            color: #0ea5e9;
+            position: absolute;
+            left: 0;
+        }
+
+        a {
+            color: #0ea5e9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 40px 20px;
+            }
+            
+            .intro-content h1 {
+                font-size: 2.5em;
+            }
+
+            .intro-content h2 {
+                font-size: 1.5em;
+            }
+
+            .doc-item {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content" id="projectDetails"></div>
+        <div class="doc-nav" id="docNav"></div>
+    </div>
+
+    <script>
+        const projects = [
+            {
+                id: 'intro',
+                title: 'Game & Level Designer',
+                customContent: true,
+                icon: 'home.png',
+                render: () => `
+                    <div class="intro-content">
+                        <h1>Akul Arora</h1>
+                        <h2>Game Designer & Programmer</h2>
+                        <div class="text-container">
+                            <p>Ever wished you could step inside a story instead of just watching it unfold? That's exactly what I do. With 4 years of crafting interactive experiences across:</p>
+                            
+                            <div class="skills-container">
+                                <span class="tag">Game Design</span>
+                                <span class="tag">Level Design</span>
+                                <span class="tag">Narrative Design</span>
+                                <span class="tag">Technical Systems</span>
+                            </div>
+                            
+                            <p>I specialize in creating worlds that players love to call home. Think of games as portals to new realities – while books and movies show you the door, I create the keys to walk through it. My toolkit combines technical wizardry with storytelling magic, bringing ideas to life in ways that players can touch, explore, and shape.</p>
+                            
+                            <p>Armed with code in one hand and creativity in the other, I'm on a mission to build games that don't just entertain – they transport, transform, and leave players with experiences they'll never forget.</p>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/akularora99/" target="_blank">in</a>
+                            <a href="mailto:akularora99@gmail.com">✉</a>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 'blob',
+                title: 'We are Blob (2024)',
+                media: {
+                    type: 'mixed',
+                    video: {
+                        source: 'blobVid.mp4',
+                        poster: 'blobCover.png'
+                    },
+                    images: [
+                        'blob1.png',
+                        'blob2.png',
+                        'blob3.png'
+                    ]
+                },
+                icon: 'blob.png',
+                description: '"We are Blob" is a cozy point-and-click game that follows the journey of Blob, a newly hired game developer racing against time to complete their first game within a week. This lighthearted narrative-driven experience combines resource management with engaging storytelling.',
+                bullets: [
+                    'Led and managed a team of four programmers, providing technical direction and ensuring project milestones were met',
+                    'Established coding standards and best practices for the development team',
+                    'Coordinated with other departments to maintain project cohesion and meet deliverables',
+                    'Architected and implemented the game\'s fundamental currency system',
+                    'Designed and developed a robust save/load mechanism',
+                    'Created the main game flow architecture and state management',
+                    'Integrated multiple interconnected systems including health, hunger, and sleep mechanics',
+                    'Wrote and implemented tutorial sequences',
+                    'Implemented cutscene systems and dialogue triggers throughout the game',
+                    'Created and fine-tuned the interconnected resource management systems'
+                ],
+                download: '<a href="https://store.steampowered.com/app/3161290/We_are_Blob/">We are Blob</a>'
+            },
+            {
+                id: 'galleryofgreed',
+                title: 'Gallery of Greed (2024)',
+                media: {
+                    type: 'mixed',
+                    video: {
+                        source: 'video.mp4',
+                        poster: 'gog1.png'
+                    },
+                    images: [
+                        'gog2.png',
+                        'gog3.png',
+                        'gog4.png'
+                    ]
+                },
+                icon: 'gog.png',
+                description: 'Gallery of Greed is a first-person puzzle heist game where players attempt to steal a priceless crown from a Renaissance art gallery. Upon acquiring the crown, the gallery goes into immediate lockdown, forcing players to solve various art and culture-inspired puzzles to escape before security catches them. Racing against time, players must navigate through the ornate halls, manipulating statues, arranging chess pieces, and bypassing security systems to make their escape with the stolen artifact.',
+                bullets: [
+                    'Led project management and team coordination throughout the development cycle',
+                    'Created comprehensive documentation including production plans, capacity plans, and burn-down charts',
+                    'Maintained and tracked task lists to ensure timely project completion',
+                    'Facilitated team communication and workflow optimization',
+                    'Designed multiple puzzle mechanics centered around an art gallery theme',
+                    'Orchestrated asset placement and environment design to create an intuitive yet challenging gallery layout',
+                    'Balanced accessibility with puzzle complexity through strategic environmental storytelling',
+                    'Developed core interaction systems like keypad security system, Chess piece interaction system, Game-wide timer system'
+                ]
+            }
+        ];
+
+        function createMediaElement(media) {
+            if (!media) return '';
+            
+            if (media.type === 'mixed') {
+                return `
+                    <div class="media-gallery">
+                        <div class="video-container">
+                            <video class="media-main" poster="${media.video.poster}" controls>
+                                <source src="${media.video.source}" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="thumbnail-container">
+                            <div class="thumbnail active" data-type="video" data-src="${media.video.source}">
+                                <img src="${media.video.poster}" alt="Video thumbnail">
+                            </div>
+                            ${media.images.map((img, index) => `
+                                <div class="thumbnail" data-type="image" data-src="${img}">
+                                    <img src="${img}" alt="Image thumbnail ${index + 1}">
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            return '';
+        }
+
+        function showProject(index) {
+            const content = document.getElementById('projectDetails');
+            content.style.opacity = '0';
+            
+            setTimeout(() => {
+                const project = projects[index];
+                
+                if (project.customContent) {
+                    content.innerHTML = project.render();
+                } else {
+                    content.innerHTML = `
+                        <div class="project-content">
+                            <div class="project-image">
+                                ${createMediaElement(project.media)}
+                            </div>
+                            <div class="project-info">
+                                <h2>${project.title}</h2>
+                                <p>${project.description}</p>
+                                <ul>
+                                    ${project.bullets.map(bullet => `<li>${bullet}</li>`).join('')}
+                                </ul>
+                                ${project.download ? `<p>Download: ${project.download}</p>` : ''}
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                updateActiveDoc();
+                setupMediaInteractions();
+                content.style.opacity = '1';
+            }, 400);
+        }
+
+        function setupMediaInteractions() {
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            const video = document.querySelector('video');
+
+            thumbnails.forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    thumbnails.forEach(t => t.classList.remove('active'));
+                    thumb.classList.add('active');
+
+                    const mediaType = thumb.dataset.type;
+                    const mainContainer = document.querySelector('.video-container');
+                    
+                    if (mediaType === 'video') {
+                        mainContainer.innerHTML = `
+                            <video class="media-main" controls>
+                                <source src="${thumb.dataset.src}" type="video/mp4">
+                            </video>
+                        `;
+                    } else {
+                        mainContainer.innerHTML = `
+                            <img class="media-main" src="${thumb.dataset.src}" alt="Project image">
+                        `;
+                    }
+                });
+            });
+        }
+
+        function createDocNav() {
+            const nav = document.getElementById('docNav');
+            projects.forEach((project, index) => {
+                const docItem = document.createElement('div');
+                docItem.className = 'doc-item';
+                docItem.innerHTML = `<img src="${project.icon}" alt="${project.title}">`;
+                docItem.onclick = () => showProject(index);
+                nav.appendChild(docItem);
+            });
+        }
+
+        function updateActiveDoc() {
+            const items = document.querySelectorAll('.doc-item');
+            items.forEach((item, index) => {
+                item.classList.toggle('active', index === currentProjectIndex);
+            });
+        }
+
+        let currentProjectIndex = 0;
+
+        window.onload = function() {
+            createDocNav();
+            showProject(0);
+        };
+    </script>
+</body>
+</html>
