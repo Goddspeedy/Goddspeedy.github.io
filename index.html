@@ -882,7 +882,7 @@
 			<div class="gallery-strip">
                         <div class="gallery-item">
                             <video id="blobVideo" autoplay muted loop playsinline poster="blobCover.png">
-                                <source src="blobVid.mp4" type="video/mp4">
+                                <source src="blobVideo.mp4" type="video/mp4">
                             </video>
                             <div class="video-controls">
                                 <button class="video-button play-pause-btn">
@@ -1025,7 +1025,7 @@ render: () => `
                         </div>
 			<div class="gallery-strip">
                         <div class="gallery-item">
-                            <video id="blobVideo" autoplay muted loop playsinline poster="blobCover.png">
+                            <video id="galleryofgreedVideo" autoplay muted loop playsinline poster="blobCover.png">
                                 <source src="video.mp4" type="video/mp4">
                             </video>
                             <div class="video-controls">
@@ -1061,18 +1061,117 @@ render: () => `
                     </div>
                 </div>
             `
-        }
+        },
+        
+        {
+            id: 'starbeads',
+            title: 'Star Beads',
+            icon: 'sbIcon.png',
+            render: () => `
+                   <div style="max-width: 1200px; margin: 0 auto; padding: 10px;">
+                    <div style="display: grid; grid-template-columns: 3fr 1fr; gap: 20px;">
+                        <!-- Left Column -->
+                        <div style="display: flex; flex-direction: column; gap: 20px;">
+                            <!-- Project Info Card -->
+                            <div class="card animate-card" style="height: 160px;">
+                                <div class="card-content">
+                                    <h1 class="project-title" style="font-size: 2rem; margin-bottom: 8px;">Star Beads</h1>
+                                    <p class="project-desc">
+                                        Learn your basic colors and shapes in Star Beads, an educational game for three-five-year-olds from Cellec Games! Select your shape, then click and drag beads of various colors to the correct location on the bracelet. Practice sketching the shapes and colors in the Free-play Drawing Mode.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- QA Card -->
+                            <div class="card animate-card" style="height: 250px; width: 136%;">
+                                <div class="card-content">
+                                    <h2 style="font-size: 1.4rem; margin-bottom: 5px; display: flex; align-items: center; gap: 8px;">
+                                        <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 24px; height: 24px;">
+                                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                            <path d="M9 12l2 2 4-4"/>
+                                        </svg>
+                                        Quality Assurance
+                                    </h2>
+                                    <ul class="feature-list" style="font-size: 1rem; line-height: 1.6;">
+                                        <li>Participated in playtesting sessions to evaluate gameplay mechanics and user experience, helping ensure balanced gameplay across all modes</li>
+                                        <li>Created detailed, actionable bug reports in JIRA with clear reproduction steps, video/screenshot evidence, and severity assessments, facilitating efficient developer response and resolution</li>
+                                        <li>Conducted thorough cross-platform testing across PC, iOS, and Android devices, verifying consistent performance, compatibility, and user experience across all supported platforms</li>
+                                        <li>Performed systematic regression testing after updates and bug fixes, maintaining detailed test documentation and ensuring no new issues during development iterations</li>
+                                        <li>Collaborated with development teams during standups and sprint planning, providing QA feedback on gameplay and UI features</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div style="display: flex; flex-direction: column; gap: 20px;">
+                            <!-- Info Boxes -->
+                            <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
+                                <a href="https://store.steampowered.com/app/3058200/Star_Beads/" target="_blank" class="info-box" style="text-decoration: none;">
+                                    <div class="info-box-title">Platform</div>
+                                    <div class="info-box-value" style="display: flex; align-items: center; gap: 8px;">
+                                        Available on iOS, Android and Steam
+                                        <svg width="16" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                                        </svg>
+                                    </div>
+                                </a>
+                                <div class="info-box">
+                                    <div class="info-box-title">Studio</div>
+                                    <div class="info-box-value">CelleC Games</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Screenshots/Video -->
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px; height: 290px;">
+                        <div class="gallery-item">
+                            <video id="starbeadsVideo" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover;">
+                                <source src="sbVideo.mp4" type="video/mp4">
+                            </video>
+                            <div class="video-controls">
+                                <button class="video-button play-pause-btn">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                                    </svg>
+                                </button>
+                                <button class="video-button mute-btn">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+                                    </svg>
+                                </button>
+                                <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1">
+                                <button class="video-button fullscreen-button">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <img src="sb2.png" alt="Screenshot 2" class="gallery-image" style="width: 100%; height: 100%; object-fit: cover; object-position: center 0%;">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="sb3.png" alt="Screenshot 3" class="gallery-image" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%;">
+                        </div>
+                    </div>
+                </div>
+            `,
+        },
     ];
 
-    function initializeVideoControls() {
-        const video = document.getElementById('blobVideo');
-        const playPauseBtn = document.querySelector('.play-pause-btn');
-        const muteBtn = document.querySelector('.mute-btn');
-        const volumeSlider = document.querySelector('.volume-slider');
-        const fullscreenBtn = document.querySelector('.fullscreen-button');
-        const videoContainer = document.querySelector('.gallery-item');
+    function initializeVideoControls(projectId) {
+    const video = document.getElementById(`${projectId}Video`);
+    const videoContainer = video.closest('.gallery-item');
+    const playPauseBtn = videoContainer.querySelector('.play-pause-btn');
+    const muteBtn = videoContainer.querySelector('.mute-btn');
+    const volumeSlider = videoContainer.querySelector('.volume-slider');
+    const fullscreenBtn = videoContainer.querySelector('.fullscreen-button');
 
-        let lastVolume = 1;
+    let lastVolume = 1;
 
         function updatePlayButton() {
             playPauseBtn.innerHTML = video.paused ? 
@@ -1215,15 +1314,16 @@ render: () => `
         contentArea.innerHTML = project.render();
         contentArea.className = `content-area ${project.id}-page`;
         updateActiveDoc(index);
-        
-        if (project.id === 'blob' || project.id === 'galleryofgreed') {
-            initializeVideoControls();
-            initializeModals();
-            const video = document.getElementById('blobVideo');
-            if (video) {
-                video.play().catch(console.log);
-            }
-        }
+    
+    // Initialize videos with generic IDs
+        const mainVideo = document.getElementById(`${project.id}Video`);
+        if (mainVideo) {
+            initializeVideoControls(project.id);
+            mainVideo.play().catch(console.log);
+    }
+    
+    initializeModals();
+
     }
 
     function updateActiveDoc(index) {
