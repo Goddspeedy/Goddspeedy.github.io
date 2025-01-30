@@ -329,16 +329,65 @@
     margin-top: 10px;
 }
 
-    .info-box {
-        background: rgba(0, 0, 0, 0.3);
-        padding: 10px;
-        border-radius: 6px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        transition: all 0.3s ease;
-        text-decoration: none;
-        color: white;
-        display: block;
-    }
+/* Default styles for boxes */
+.info-box {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+.info-box-title {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 5px;
+}
+
+.info-box-value {
+    font-size: 0.9rem;
+    color: white;
+    font-weight: 600;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    white-space: normal;
+    line-height: 1.1;
+    word-wrap: break-word;
+    min-height: 1.2em;
+}
+
+
+/* Styles that apply only when there are exactly 5 boxes */
+.info-box-container:has(*:nth-child(5):last-child) {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 8px;
+     margin-top: 2px; 
+}
+
+.info-box-container:has(*:nth-child(5):last-child) .info-box {
+     padding: 8px 8px 16px 8px; /* Increased bottom padding */
+    min-height: 80px; /* Added minimum height */
+}
+
+.info-box-container:has(*:nth-child(5):last-child) .info-box-title {
+    font-size: 0.73rem;
+    margin-bottom: 4px;
+}
+
+.info-box-container:has(*:nth-child(5):last-child) .info-box-value {
+    font-size: 0.9rem;
+    gap: 4px;
+    margin-top: 6px;
+}
+
+.info-box-container:has(*:nth-child(5):last-child) .download-icon {
+    width: 20px;
+    height: 33px;
+}
 
     .info-box:hover {
         background: rgba(0, 0, 0, 0.4);
@@ -346,25 +395,10 @@
         transform: translateY(-2px);
     }
 
-    .info-box-title {
-        font-size: 0.8rem;
-        color: rgba(255, 255, 255, 0.7);
-        margin-bottom: 5px;
-    }
-
-    .info-box-value {
-        font-size: .9rem;
-        color: white;
-        font-weight: 600;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    .download-icon {
-        width: 20px;
-        height: 20px;
-    }
+.download-icon {
+    width: 18px; /* Increased from 14px */
+    height: 18px; /* Increased from 14px */
+}
 
     .feature-list {
         list-style: none;
@@ -791,6 +825,10 @@
                                     <div class="info-box-value">25 people</div>
                                 </div>
                                 <div class="info-box">
+                                    <div class="info-box-title">Engine</div>
+                                    <div class="info-box-value">Unity</div>
+                                </div>
+                                <div class="info-box">
                                     <div class="info-box-title">Studio</div>
                                     <div class="info-box-value">Black Banshee Studios</div>
                                 </div>
@@ -938,6 +976,10 @@ render: () => `
                                 <div class="info-box">
                                     <div class="info-box-title">Team Size</div>
                                     <div class="info-box-value">11 people</div>
+                                </div>
+                                <div class="info-box">
+                                    <div class="info-box-title">Engine</div>
+                                    <div class="info-box-value">Unreal</div>
                                 </div>
                                 <div class="info-box">
                                     <div class="info-box-title">Studio</div>
@@ -1182,7 +1224,137 @@ render: () => `
             }
         </style>
     `
-}
+},
+
+   
+            {
+            id: 'pineapple',
+            title: 'Pineapple Panic',
+            icon: 'ppIcon.png',
+            render: () => `
+                <div style="max-width: 1200px; margin: 0 auto; padding: 10px;">
+                    <!-- Top section with project info and right sidebar -->
+                    <div style="margin-bottom: 10px;">
+                        <!-- Project Info Card -->
+                         <div class="card animate-card" style="height: 230px; overflow-y: auto;">
+                            <div class="card-content">
+                                <h1 class="project-title" style="font-size: 2rem; margin-bottom: 15px;">Pineapple Panic</h1>
+                                <p class="project-desc" style="margin-bottom: 20px;">
+                                    Have your games become bland and fruitless? Help Pina, the terrified pineapple, to dodge and leap over obstacles so that he can outwit the dastardly Chef Joe Colada in this rear-facing endless runner. Can you outpace his culinary madness, or will you end up in a fruity predicament?
+                                </p>
+                                
+                                <!-- Info boxes in a grid -->
+                                <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px;">
+                                    <div class="info-box animate-card">
+                                        <div class="info-box-title">Development Time</div>
+                                        <div class="info-box-value">5 months</div>
+                                    </div>
+                                    <div class="info-box animate-card">
+                                        <div class="info-box-title">Team Size</div>
+                                        <div class="info-box-value">20 people</div>
+                                    </div>
+                                    <div class="info-box animate-card">
+                                        <div class="info-box-title">Engine</div>
+                                        <div class="info-box-value">Unreal</div>
+                                    </div>
+                                    <div class="info-box animate-card">
+                                        <div class="info-box-title">Studio</div>
+                                        <div class="info-box-value">Black Banshee Studios</div>
+                                    </div>
+                                    <a href="https://store.steampowered.com/app/3041960/Pineapple_Panic/" 
+                                       target="_blank" 
+                                       class="info-box animate-card">
+                                        <div class="info-box-title">Platform</div>
+                                        <div class="info-box-value" style="display: flex; align-items: center; gap: 8px;">
+                                         Available on Steam
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                                            </svg>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Programming Section -->
+                    <div class="card animate-card" style="height: 230px; overflow-y: auto; margin-bottom: 10px;">
+                        <div class="card-content">
+                            <h2 style="font-size: 1.4rem; margin-bottom: 5px; display: flex; align-items: center; gap: 8px;">
+                                <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 24px; height: 24px;">
+                                    <path d="M16 18l6-6-6-6"></path>
+                                    <path d="M8 6l-6 6 6 6"></path>
+                                </svg>
+                                Programming & Development
+                            </h2>
+                            <ul class="feature-list" style="font-size: 1rem; line-height: 1.6;">
+                                <li>Implemented and debugged the audio system, conducting thorough testing to resolve critical issues with sound playback and audio slider functionality</li>
+                                <li>Optimized and tested the obstacle spawning system across different game scenarios to ensure consistent and balanced obstacle placement throughout gameplay</li>
+                                <li>Enhanced collision detection system between player character and obstacles, implementing proper feedback mechanisms and verifying through comprehensive playthrough testing</li>
+                                <li>Collaborated with the development team to identify, document, and resolve gameplay-critical bugs while maintaining detailed testing documentation</li>
+                                <li>Created and managed systematic testing procedures to validate all implemented features and systems before deployment</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                     <!-- Gallery Section -->
+  <div class="gallery-section" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; height: auto;">
+    <div class="gallery-item">
+      <video id="pineappleVideo" autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover;">
+        <source src="ppVideo.mp4" type="video/mp4">
+      </video>
+      <div class="video-controls">
+        <button class="video-button play-pause-btn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+        </button>
+        <button class="video-button mute-btn">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+          </svg>
+        </button>
+        <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1">
+        <button class="video-button fullscreen-button">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+                        <div class="gallery-item">
+                            <img src="pp1.png" alt="Screenshot 1" class="gallery-image" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="pp3.png" alt="Screenshot 2" class="gallery-image" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+
+                <style>
+                    @media (max-width: 768px) {
+                        [style*="grid-template-columns: minmax(0, 3fr) minmax(250px, 1fr)"] {
+                            grid-template-columns: 1fr !important;
+                        }
+                        
+                        .gallery-section {
+                            height: auto !important;
+                            grid-template-columns: 1fr !important;
+                        }
+                        
+                        .gallery-item {
+                            height: 250px !important;
+                        }
+                        
+                        .card {
+                            margin-bottom: 15px !important;
+                        }
+                    }
+                </style>
+            `
+        }
     ];
 
     function initializeVideoControls(projectId) {
