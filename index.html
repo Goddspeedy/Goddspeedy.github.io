@@ -592,9 +592,9 @@
         z-index: 1001;
     }
 
-    .doc-nav {
+   .doc-nav {
         display: flex;
-        justify-content: center;
+        justify-content: center;  /* Center by default for desktop */
         padding: 12px 15px;
         gap: 30px;
         background: rgba(24, 24, 27, 0.5);
@@ -605,6 +605,25 @@
         left: 0;
         right: 0;
         z-index: 1000;
+    }
+
+    @media (max-width: 768px) {
+        .doc-nav {
+            justify-content: flex-start;  /* Left-align on mobile */
+            overflow-x: auto;  /* Enable horizontal scrolling on mobile */
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .doc-nav::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .doc-nav::after {
+            content: '';
+            padding-right: 15px;
+        }
     }
 
    .doc-item {
